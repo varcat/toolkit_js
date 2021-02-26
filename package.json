@@ -8,7 +8,8 @@
   "types": "types/index.d.ts",
   "scripts": {
     "build": "node scripts/rm & tsc & babel src --out-dir=lib --extensions=.ts --ignore=\"src/**/*.test.ts\"",
-    "test": "jest"
+    "test": "jest",
+    "publish": "npm run build & npm publish"
   },
   "repository": {
     "type": "git",
