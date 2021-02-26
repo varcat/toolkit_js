@@ -108,5 +108,10 @@ dist
 .vscode
 
 # 以下单独
-types
-lib
+src/**/*.test.ts
+scripts
+.browserslistrc
+.gitignore
+babel.config.json
+rollup.config.js
+tsconfig.json

@@ -1,0 +1,19 @@
+/* Visit https://aka.ms/tsconfig.json to read more about this file */
+{
+  "exclude": [
+    "src/**/*.test.ts"
+  ],
+  "compilerOptions": {
+    "rootDir": "./src",
+    "target": "ESNEXT",
+    "module": "ESNEXT",
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationDir": "types",
+    "isolatedModules": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+  }
+}
