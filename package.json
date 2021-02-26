@@ -7,7 +7,8 @@
   "browser": "lib/index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "build": "node scripts/rm & tsc & babel src --out-dir=lib --extensions=.ts --ignore=\"src/**/*.test.ts\""
+    "build": "node scripts/rm & tsc & babel src --out-dir=lib --extensions=.ts --ignore=\"src/**/*.test.ts\"",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
