@@ -2,6 +2,7 @@ import {isExist} from "./index";
 
 export function isEmpty(x: number | string | Array<any> | object | null | undefined | Set<any> | Map<any, any>): boolean {
     if (!isExist(x)) return true;
+    if (typeof x === 'function') return false;
     if (typeof x === 'number') {
         return x === 0;
     }
@@ -11,11 +12,12 @@ export function isEmpty(x: number | string | Array<any> | object | null | undefi
     if (Array.isArray(x)) {
         return x.length === 0;
     }
-    if ((x as Set<any>)[Symbol.toStringTag] === 'Set') {
+    if (x instanceof Set) {
         return (x as Set<any>).size === 0;
     }
-    if ((x as Map<any, any>)[Symbol.toStringTag] === 'Map') {
+    if (x instanceof Map) {
         return (x as Map<any, any>).size === 0;
     }
+
     return false;
 }
