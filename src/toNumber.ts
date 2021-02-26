@@ -1,0 +1,15 @@
+import {isSafeNumber} from "./isSafeNumber";
+import {isNumber} from "./isNumber";
+
+export interface IToNumberParams {
+  defaultValue: number
+}
+
+export function toNumber(x: any, {defaultValue = 0} = {} as IToNumberParams): number {
+  if (isSafeNumber(x)) return x;
+  if (typeof x === 'string') {
+    x = x.replace(/[^-0-9.]/g, '');
+  }
+  const num = isNumber(x) ? x : Number(x);
+  return isSafeNumber(num) ? num : defaultValue;
+}
