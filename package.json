@@ -7,7 +7,7 @@
   "browser": "lib/index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "build": "node scripts/rm & tsc & babel src --out-dir=lib --extensions=.ts"
+    "build": "node scripts/rm & tsc & babel src --out-dir=lib --extensions=.ts --ignore=\"src/**/*.test.ts\""
   },
   "repository": {
     "type": "git",
@@ -31,12 +31,10 @@
     "@babel/core": "^7.13.1",
     "@babel/preset-env": "^7.13.5",
     "@babel/preset-typescript": "^7.13.0",
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-node-resolve": "^11.2.0",
+    "@types/jest": "^26.0.20",
     "babel-jest": "^26.6.3",
     "del": "^6.0.0",
     "jest": "^26.6.3",
-    "rollup": "^2.39.1",
     "typescript": "^4.2.2"
   }
 }

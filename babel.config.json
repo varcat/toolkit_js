@@ -1,8 +1,4 @@
 {
-  "ignore": [
-    "src/**/*.test.ts",
-    "src/**/*.test.js"
-  ],
   "presets": [
     [
       "@babel/env"
