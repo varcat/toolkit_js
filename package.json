@@ -1,6 +1,6 @@
 {
   "name": "wsp-toolkit",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Personal toolbox",
   "main": "dist/index.js",
   "module": "dist/index.js",
