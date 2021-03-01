@@ -7,3 +7,4 @@ export {toNumber} from "./toNumber";
 export {add} from "./add";
 export {isNumber} from "./isNumber";
 export {isSafeNumber} from "./isSafeNumber";
+export {unique} from './unique';
