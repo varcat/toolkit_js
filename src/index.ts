@@ -4,7 +4,7 @@ export {mustArray} from "./mustArray";
 export {typeOf} from "./typeOf";
 export {identity} from "./identity";
 export {toNumber} from "./toNumber";
-export {add} from "./add";
+export {addition} from "./addition";
 export {isNumber} from "./isNumber";
 export {isSafeNumber} from "./isSafeNumber";
 export {unique} from './unique';
