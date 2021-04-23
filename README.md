@@ -15,3 +15,18 @@ import { isExist } from "wsp-toolkit";
 // node
 const { typeOf } = require("wsp-toolkit");
 ```
+
+## API
+
+- addition
+- currying
+- identity
+- isEmpty
+- isExist
+- isNumber
+- isSafeNumber
+- toArray
+- toNumber
+- typeOf
+- unique
+- LinkedList

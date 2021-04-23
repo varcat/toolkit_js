@@ -1,6 +1,6 @@
 import {isExist} from "./index";
 
-export function mustArray<T>(x: any): Array<T> {
+export function toArray<T>(x: any): Array<T> {
   if (Array.isArray(x)) return x;
   if (!isExist(x)) return [];
   try {

@@ -16,3 +16,9 @@ test('function is not empty', () => {
   const fn = () => {};
   expect(isEmpty(fn)).toBe(false);
 });
+
+test('all', () => {
+  expect(isEmpty({})).toBe(true);
+  expect(isEmpty(new Set())).toBe(true);
+  expect(isEmpty(new Map())).toBe(true);
+})

@@ -6,7 +6,6 @@ export interface IToNumberParams {
 }
 
 export function toNumber(x: any, {defaultValue = 0} = {} as IToNumberParams): number {
-  if (isSafeNumber(x)) return x;
   if (typeof x === 'string') {
     x = x.replace(/[^-0-9.]/g, '');
   }
