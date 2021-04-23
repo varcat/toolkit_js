@@ -17,4 +17,6 @@ test('toNumber', () => {
   expect(toNumber(undefined)).toBe(0);
   expect(toNumber(1)).toBe(1);
   expect(toNumber(10_000)).toBe(10000);
+  expect(toNumber('10,000.20')).toBe(10000.2);
+  expect(toNumber('-870,123,001.20')).toBe(-870123001.2);
 })

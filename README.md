@@ -28,9 +28,9 @@ const { typeOf } = require("wsp-toolkit");
 - [sleep](#wsp-toolkit-sleep)
 - [toArray](#wsp-toolkit-toArray)
 - [toNumber](#wsp-toolkit-toNumber)
-- typeOf
-- unique
-- LinkedList
+- [typeOf](#wsp-toolkit-typeOf)
+- [unique](#wsp-toolkit-unique)
+- [LinkedList](#wsp-toolkit-LinkedList)
 
 ---
 
@@ -84,25 +84,84 @@ isExist([1,2,3]) // true
 
 ### <a id="wsp-toolkit-isNumber">isNumber</a>
 ```javascript
-
+isNumber(0) // true
+isNumber(NaN) // true
+isNumber(Infinity) // true
+isNumber('0') // false
+isNumber([]) // false
 ```
 
 ### <a id="wsp-toolkit-isSafeNumber">isSafeNumber</a>
 ```javascript
-
+isSafeNumber(NaN) // false
+isSafeNumber(Infinity) // false
+isSafeNumber(0) // true
+isSafeNumber(Number.MIN_SAFE_INTEGER) // true
+isSafeNumber(Number.MAX_SAFE_INTEGER) // true
 ```
 
 ### <a id="wsp-toolkit-sleep">sleep</a>
 ```javascript
-
+// do someting
+await sleep(10_000); // wait for a timeout 10s
+// do someting
 ```
 
 ### <a id="wsp-toolkit-toArray">toArray</a>
 ```javascript
-
+toArray('abc') // ['a', 'b', 'c']
+toArray([]) // []
+toArray(null) // []
+toArray(undefined) // []
+toArray({length: 2}) // [undefined, undefined]
+toArray(document.querySelectorAll('div')) // NodeList: [div, div]
+toArray(0) // [0]
+toArray(false) // [false]
+toArray(new Set([1, 2])) // [1, 2]
 ```
 
 ### <a id="wsp-toolkit-toNumber">toNumber</a>
+```javascript
+toNumber(100) // 100
+toNumber('10,000') // 10000
+toNumber('-870,123,001.20') // 870123001.2
+toNumber(null) // 0
+toNumber(null, {defaultValue: 100}) // 100
+toNumber(NaN, {defaultValue: 100}) // 100
+toNumber(0, {defaultValue: 100}) // 0
+```
+
+### <a id="wsp-toolkit-typeOf">typeOf</a>
+```javascript
+typeOf('') // String
+typeOf(0) // Number
+typeOf(NaN) // Number
+typeOf(Infinity) // Number
+typeOf(Symbol) // Function
+typeOf(Symbol('wsp')) // Symbol
+typeOf([]) // Array
+typeOf({}) // Object
+typeOf(new Map()) // Map
+typeOf(new FormData()) // FormData
+```
+
+### <a id="wsp-toolkit-unique">unique</a>
+```javascript
+unique([1, 1, 3]) // [1, 3]
+
+arr = [{id: 1}, {id: 2}, {id: 1}, {id: 2}];
+unique(arr, 'id') // [{id: 1}, {id: 2}]
+
+arr = [{info: {id: 1}}, {info: {id: 2}}, {info: {id: 3}}, {info: {id: 2}}];
+unique(arr, x => x.info.id)
+// [
+//   {info: {id: 1}},
+//   {info: {id: 2}},
+//   {info: {id: 3}},
+// ]
+```
+
+### <a id="wsp-toolkit-LinkedList">LinkedList</a>
 ```javascript
 
 ```

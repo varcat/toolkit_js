@@ -14,6 +14,7 @@ test(`Symbol typeof Symbol`, () => {
     const s = Symbol('test');
     expect(typeOf(s, {fullName: true})).toBe('[object Symbol]');
     expect(typeOf(s)).toBe('Symbol');
+    expect(typeOf(Symbol)).toBe('Function');
 });
 
 test(`undefined typeof Undefined`, () => {
@@ -33,4 +34,5 @@ test('typeOf', () => {
   expect(typeOf(new FormData())).toBe('FormData');
   expect(typeOf(new URLSearchParams())).toBe('URLSearchParams');
   expect(typeOf(() => {})).toBe('Function');
+  expect(typeOf(true)).toBe('Boolean');
 })
