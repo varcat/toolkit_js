@@ -23,11 +23,11 @@ const { typeOf } = require("wsp-toolkit");
 - [identity](#wsp-toolkit-identity)
 - [isEmpty](#wsp-toolkit-isEmpty)
 - [isExist](#wsp-toolkit-isExist)
-- isNumber
-- isSafeNumber
-- sleep
-- toArray
-- toNumber
+- [isNumber](#wsp-toolkit-isNumber)
+- [isSafeNumber](#wsp-toolkit-isSafeNumber)
+- [sleep](#wsp-toolkit-sleep)
+- [toArray](#wsp-toolkit-toArray)
+- [toNumber](#wsp-toolkit-toNumber)
 - typeOf
 - unique
 - LinkedList
@@ -59,6 +59,7 @@ identity(null) // null
 identity(1) // 1
 identity({a: 1}) // {a: 1}
 ```
+
 ### <a id="wsp-toolkit-isEmpty">isEmpty</a>
 ```javascript
 isEmpty('') // true
@@ -70,6 +71,7 @@ isEmpty(new Set()) // true
 isEmpty(() => {}) // false
 isEmpty(0) // false
 ```
+
 ### <a id="wsp-toolkit-isExist">isExist</a>
 ```javascript
 isExist(null) // false
@@ -78,4 +80,29 @@ isExist(0) // true
 isExist('') // true
 isExist([]) // true
 isExist([1,2,3]) // true
+```
+
+### <a id="wsp-toolkit-isNumber">isNumber</a>
+```javascript
+
+```
+
+### <a id="wsp-toolkit-isSafeNumber">isSafeNumber</a>
+```javascript
+
+```
+
+### <a id="wsp-toolkit-sleep">sleep</a>
+```javascript
+
+```
+
+### <a id="wsp-toolkit-toArray">toArray</a>
+```javascript
+
+```
+
+### <a id="wsp-toolkit-toNumber">toNumber</a>
+```javascript
+
 ```
