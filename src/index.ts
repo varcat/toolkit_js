@@ -10,3 +10,4 @@ export {isSafeNumber} from "./isSafeNumber";
 export {unique} from './unique';
 export {currying} from './currying';
 export {LinkedList} from './LinkedList';
+export {sleep} from './sleep';

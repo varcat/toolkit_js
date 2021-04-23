@@ -10,5 +10,5 @@ export function addition(...numbers: number[]): number {
     }
     return numbers[0];
   }
-  return add(numbers);
+  return add(numbers.flat(Infinity));
 }

@@ -21,4 +21,6 @@ test('一个', () => {
   // @ts-ignore
   expect(addition([1])).toEqual(1);
   expect(addition(1)).toEqual(1);
+  // @ts-ignore
+  expect(addition(1, 2, [3, 4])).toEqual(10);
 })
