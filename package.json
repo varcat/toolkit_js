@@ -1,6 +1,6 @@
 {
   "name": "wsp-toolkit",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Personal toolbox",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -10,7 +10,7 @@
     "clear": "node scripts/rm",
     "build": "tsc & babel src --out-dir=dist --extensions=.ts --ignore=\"src/**/*.test.ts\" -s",
     "test": "jest",
-    "pub": "npm run build & npm publish & npm run clear"
+    "pub": "npm run build & npm publish --access public & npm run clear"
   },
   "repository": {
     "type": "git",

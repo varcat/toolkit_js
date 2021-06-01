@@ -19,12 +19,15 @@ const { typeOf } = require("wsp-toolkit");
 ## API
 
 - [addition](#wsp-toolkit-addition)
+- [and](#wsp-toolkit-and)
 - [currying](#wsp-toolkit-currying)
 - [identity](#wsp-toolkit-identity)
 - [isEmpty](#wsp-toolkit-isEmpty)
 - [isExist](#wsp-toolkit-isExist)
 - [isNumber](#wsp-toolkit-isNumber)
 - [isSafeNumber](#wsp-toolkit-isSafeNumber)
+- [or](#wsp-toolkit-or)
+- [pipe](#wsp-toolkit-pipe)
 - [sleep](#wsp-toolkit-sleep)
 - [toArray](#wsp-toolkit-toArray)
 - [toNumber](#wsp-toolkit-toNumber)
@@ -40,6 +43,13 @@ const { typeOf } = require("wsp-toolkit");
 addition(1, 2, 3) // 6
 addition([1, 2, 3, 4]) // 10
 addition(1, 2, [7, 10]) // 20
+```
+
+### <a id="wsp-toolkit-and">and</a>
+
+```javascript
+and(1, 0) // false
+and(1, 0 !== null) // true
 ```
 
 ### <a id="wsp-toolkit-currying">currying</a>
@@ -98,6 +108,21 @@ isSafeNumber(Infinity) // false
 isSafeNumber(0) // true
 isSafeNumber(Number.MIN_SAFE_INTEGER) // true
 isSafeNumber(Number.MAX_SAFE_INTEGER) // true
+```
+
+### <a id="wsp-toolkit-or">or</a>
+```javascript
+or(0, 1, false) // true
+or(null, undefined, 0, "") // false
+```
+
+### <a id="wsp-toolkit-pipe">pipe</a>
+```javascript
+const res = pipe(
+  (str: string, count: number) => str.repeat(count),
+  (str: string) => str.toUpperCase()
+)("a", 2);
+res // "AA"
 ```
 
 ### <a id="wsp-toolkit-sleep">sleep</a>
