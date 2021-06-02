@@ -25,14 +25,17 @@ const { typeOf } = require("wsp-toolkit");
 - [addition](#wsp-toolkit-addition)
 - [and](#wsp-toolkit-and)
 - [currying](#wsp-toolkit-currying)
+- [debounce](#wsp-toolkit-debounce) 待补全
 - [identity](#wsp-toolkit-identity)
 - [isEmpty](#wsp-toolkit-isEmpty)
 - [isExist](#wsp-toolkit-isExist)
 - [isNumber](#wsp-toolkit-isNumber)
 - [isSafeNumber](#wsp-toolkit-isSafeNumber)
+- [once](#wsp-toolkit-once)
 - [or](#wsp-toolkit-or)
 - [pipe](#wsp-toolkit-pipe)
 - [sleep](#wsp-toolkit-sleep)
+- [throttle](#wsp-toolkit-throttle) 待补全
 - [toArray](#wsp-toolkit-toArray)
 - [toNumber](#wsp-toolkit-toNumber)
 - [typeOf](#wsp-toolkit-typeOf)
@@ -112,6 +115,19 @@ isSafeNumber(Infinity) // false
 isSafeNumber(0) // true
 isSafeNumber(Number.MIN_SAFE_INTEGER) // true
 isSafeNumber(Number.MAX_SAFE_INTEGER) // true
+```
+
+### <a id="wsp-toolkit-once">once</a>
+```typescript
+const arr: number[] = [];
+function push(x: number) {
+  arr.push(x)
+}
+const oncePush = once(push);
+oncePush(1);
+oncePush(2);
+oncePush(3);
+arr; // [1]
 ```
 
 ### <a id="wsp-toolkit-or">or</a>
