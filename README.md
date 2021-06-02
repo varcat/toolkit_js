@@ -9,12 +9,12 @@ npm i wsp-toolkit
 ```
 
 ```javascript
-// browser
-import { isExist } from "wsp-toolkit";
-
 // script: js文件位于 /dist/umd/index.min.js
 <script src="/dist/umd/index.min.js"></script>
 window.toolkit.isExist('')
+
+// esmodule
+import { isExist } from "wsp-toolkit";
 
 // node
 const { typeOf } = require("wsp-toolkit");
