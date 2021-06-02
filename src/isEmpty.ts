@@ -1,11 +1,22 @@
-import {isExist, typeOf} from "./index";
-import {isNumber} from "./isNumber";
+import { isNumber } from "./isNumber";
+import { isExist } from "./isExist";
+import { typeOf } from "./typeOf";
 
-export function isEmpty(x: number | string | Array<any> | object | null | undefined | Set<any> | Map<any, any>): boolean {
+export function isEmpty(
+  x:
+    | number
+    | string
+    | Array<any>
+    | object
+    | null
+    | undefined
+    | Set<any>
+    | Map<any, any>
+): boolean {
   if (!isExist(x)) return true;
-  if (typeof x === 'function' || isNumber(x)) return false;
-  if (typeof x === 'string') {
-    return x.trim().length === 0
+  if (typeof x === "function" || isNumber(x)) return false;
+  if (typeof x === "string") {
+    return x.trim().length === 0;
   }
   if (Array.isArray(x)) {
     return x.length === 0;
@@ -16,8 +27,8 @@ export function isEmpty(x: number | string | Array<any> | object | null | undefi
   if (x instanceof Map) {
     return (x as Map<any, any>).size === 0;
   }
-  if (typeOf(x) === 'Object') {
-    return Object.keys((x as object)).length === 0;
+  if (typeOf(x) === "Object") {
+    return Object.keys(x as object).length === 0;
   }
 
   return false;

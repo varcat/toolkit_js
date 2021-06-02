@@ -1,5 +1,5 @@
-import {typeOf} from "./index";
+import { typeOf } from "./typeOf";
 
 export function isNumber(x: any): boolean {
-  return typeOf(x) === 'Number';
+  return typeOf(x) === "Number";
 }

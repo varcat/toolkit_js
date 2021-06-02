@@ -1,12 +1,17 @@
+import { typeOf } from "./typeOf";
 
-function add(xs: number[]) : number {
-  return xs.reduce((sum, crt) => sum + crt);
+function add(xs: number[]): number {
+  let sum = 0;
+  for (let x of xs) {
+    sum += x;
+  }
+  return sum;
 }
 
 export function addition(...numbers: number[]): number {
   if (numbers.length === 1) {
-    if (Array.isArray(numbers[0])) {
-      return add(numbers[0]);
+    if (typeOf(numbers[0]) === "Array") {
+      return add(numbers[0] as unknown as number[]);
     }
     return numbers[0];
   }
