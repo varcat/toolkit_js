@@ -14,3 +14,6 @@ export { sleep } from "./sleep";
 export { pipe } from "./pipe";
 export { or } from "./or";
 export { and } from "./and";
+export { debounce } from "./debounce";
+export { throttle } from "./throttle";
+export { once } from "./once";
