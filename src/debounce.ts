@@ -1,4 +1,5 @@
 import { isExist } from "./isExist";
+import { notExist } from "./notExist";
 
 interface IDebounceMethods {
   cancel: () => void;
@@ -23,12 +24,11 @@ export function debounce<T extends Function>(
   let lastCallTime: DOMTimeStamp | null = null;
   let lastInvokeTime: DOMTimeStamp | null = null;
 
-  function shouldInvoke(time: DOMTimeStamp) {
-    return (
-      isExist(maxWait) &&
-      ((lastCallTime && time - lastCallTime! > maxWait!) ||
-        (lastInvokeTime && time - lastInvokeTime! > maxWait!))
-    );
+  function shouldInvoke(time: DOMTimeStamp): boolean {
+    if (notExist(maxWait)) return false;
+    if (lastCallTime && time - lastCallTime! > maxWait!) return true;
+    if (lastInvokeTime && time - lastInvokeTime! > maxWait!) return true;
+    return false;
   }
 
   function debounced(...args: any[]) {
