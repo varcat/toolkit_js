@@ -21,12 +21,13 @@ export function debounce<T extends Function>(
 
   let timerId: any;
   let lastCallTime: DOMTimeStamp | null = null;
-  let lastInvokeTime: DOMTimeStamp = 0;
+  let lastInvokeTime: DOMTimeStamp | null = null;
 
   function shouldInvoke(time: DOMTimeStamp) {
     return (
       isExist(maxWait) &&
-      (time - lastCallTime! > maxWait! || time - lastInvokeTime > maxWait!)
+      ((lastCallTime && time - lastCallTime! > maxWait!) ||
+        (lastInvokeTime && time - lastInvokeTime! > maxWait!))
     );
   }
 
@@ -46,6 +47,9 @@ export function debounce<T extends Function>(
     const now = Date.now();
     const isInvoking = shouldInvoke(now);
     lastCallTime = now;
+    if (!lastInvokeTime) {
+      lastInvokeTime = now;
+    }
 
     if (leading && !isExist(timerId)) {
       invokeFn(now);
@@ -63,6 +67,7 @@ export function debounce<T extends Function>(
     clearTimeout(timerId);
     timerId = null;
     lastCallTime = null;
+    lastInvokeTime = null;
   };
 
   return debounced as unknown as T & IDebounceMethods;
