@@ -31,6 +31,13 @@ export function debounce<T extends Function>(
     return false;
   }
 
+  function cancel() {
+    clearTimeout(timerId);
+    timerId = null;
+    lastCallTime = null;
+    lastInvokeTime = null;
+  }
+
   function debounced(...args: any[]) {
     function invokeFn(time: DOMTimeStamp) {
       lastInvokeTime = time;
@@ -63,12 +70,7 @@ export function debounce<T extends Function>(
     }
   }
 
-  debounced.cancel = () => {
-    clearTimeout(timerId);
-    timerId = null;
-    lastCallTime = null;
-    lastInvokeTime = null;
-  };
+  debounced.cancel = cancel;
 
   return debounced as unknown as T & IDebounceMethods;
 }
