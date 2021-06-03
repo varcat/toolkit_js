@@ -17,3 +17,4 @@ export { and } from "./and";
 export { debounce } from "./debounce";
 export { throttle } from "./throttle";
 export { once } from "./once";
+export { notExist } from "./notExist";

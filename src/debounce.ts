@@ -6,6 +6,7 @@ interface IDebounceMethods {
 
 interface IDebounceOpts {
   leading?: boolean;
+  trailing?: boolean;
   maxWait?: number;
 }
 
@@ -14,46 +15,54 @@ export function debounce<T extends Function>(
   wait: number,
   opts: IDebounceOpts = {}
 ): T & IDebounceMethods {
-  let timerId: any;
   const leading = opts.leading ?? false;
+  const trailing = opts.trailing ?? true;
   const maxWait = opts.maxWait;
-  let startRunTime: DOMTimeStamp;
-  let isRunning = false;
+
+  let timerId: any;
+  let lastCallTime: DOMTimeStamp | null = null;
+  let lastInvokeTime: DOMTimeStamp = 0;
+
+  function shouldInvoke(time: DOMTimeStamp) {
+    return (
+      isExist(maxWait) &&
+      (time - lastCallTime! > maxWait! || time - lastInvokeTime > maxWait!)
+    );
+  }
 
   function debounced(...args: any[]) {
-    function invokeFn() {
-      isRunning = false;
-      startRunTime = Date.now();
+    function invokeFn(time: DOMTimeStamp) {
+      lastInvokeTime = time;
       func(...args);
     }
 
-    function startTimer() {
-      if (!isRunning) {
-        startRunTime = Date.now();
-      }
-      isRunning = true;
-      timerId = setTimeout(() => {
-        invokeFn();
+    function startTimer(time: DOMTimeStamp) {
+      return setTimeout(() => {
+        if (!trailing) return;
+        invokeFn(time);
       }, wait);
     }
 
     const now = Date.now();
+    const isInvoking = shouldInvoke(now);
+    lastCallTime = now;
 
     if (leading && !isExist(timerId)) {
-      invokeFn();
-      startTimer();
+      invokeFn(now);
+      timerId = startTimer(now);
     } else {
       clearTimeout(timerId);
-      if (isRunning && isExist(maxWait) && now - startRunTime > maxWait!) {
-        invokeFn();
+      if (isInvoking) {
+        invokeFn(now);
       }
-      startTimer();
+      timerId = startTimer(now);
     }
   }
 
   debounced.cancel = () => {
     clearTimeout(timerId);
     timerId = null;
+    lastCallTime = null;
   };
 
   return debounced as unknown as T & IDebounceMethods;
