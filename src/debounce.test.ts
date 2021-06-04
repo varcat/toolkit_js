@@ -1,5 +1,3 @@
 import { debounce } from "./debounce";
 
-test("debounce", () => {
-  debounce();
-});
+test("debounce", () => {});
