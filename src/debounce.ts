@@ -3,7 +3,6 @@ import { throttle } from "./throttle";
 interface IDebounceOpts {
   leading?: boolean;
   trailing?: boolean;
-  maxWait?: number;
 }
 
 export function debounce<T extends Function>(

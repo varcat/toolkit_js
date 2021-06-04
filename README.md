@@ -25,17 +25,18 @@ const { typeOf } = require("wsp-toolkit");
 - [addition](#wsp-toolkit-addition)
 - [and](#wsp-toolkit-and)
 - [currying](#wsp-toolkit-currying)
-- [debounce](#wsp-toolkit-debounce) 待补全
+- [debounce](#wsp-toolkit-debounce)
 - [identity](#wsp-toolkit-identity)
 - [isEmpty](#wsp-toolkit-isEmpty)
 - [isExist](#wsp-toolkit-isExist)
 - [isNumber](#wsp-toolkit-isNumber)
 - [isSafeNumber](#wsp-toolkit-isSafeNumber)
+- [notExist](#wsp-toolkit-notExist)
 - [once](#wsp-toolkit-once)
 - [or](#wsp-toolkit-or)
 - [pipe](#wsp-toolkit-pipe)
 - [sleep](#wsp-toolkit-sleep)
-- [throttle](#wsp-toolkit-throttle) 待补全
+- [throttle](#wsp-toolkit-throttle)
 - [toArray](#wsp-toolkit-toArray)
 - [toNumber](#wsp-toolkit-toNumber)
 - [typeOf](#wsp-toolkit-typeOf)
@@ -68,6 +69,15 @@ const curryFn = currying(add);
 curryFn(1, 2) // 3
 curryFn(1)(2) // 3
 curryFn()(1)(2) // 3
+```
+
+### <a id="wsp-toolkit-debounce">debounce</a>
+```typescript
+interface IOpts {
+  leading?: boolean; // default false
+  trailing?: boolean; // default true
+}
+type debounce<T extends Function> = (func: T, wait: number, options?: IOpts) => T;
 ```
 
 ### <a id="wsp-toolkit-identity">identity</a>
@@ -117,6 +127,15 @@ isSafeNumber(Number.MIN_SAFE_INTEGER) // true
 isSafeNumber(Number.MAX_SAFE_INTEGER) // true
 ```
 
+### <a id="wsp-toolkit-notExist">notExist</a>
+```javascript
+notExist(null) // true
+notExist(undefined) // true
+notExist(0) // false
+notExist('') // false
+notExist({}) // false
+```
+
 ### <a id="wsp-toolkit-once">once</a>
 ```typescript
 const arr: number[] = [];
@@ -150,6 +169,16 @@ res // "AA"
 // do someting
 await sleep(10_000); // wait for a timeout 10s
 // do someting
+```
+
+### <a id="wsp-toolkit-throttle">throttle</a>
+```typescript
+interface IOpts {
+  leading?: boolean; // default: false 开始时是否调用函数
+  trailing?: boolean; // default: true 结束时是否调用函数
+  maxWait?: number; // default: wait 为0则开始到结束之间的事件不调用函数
+}
+type debounce<T extends Function> = (func: T, wait: number, options?: IOpts) => T;
 ```
 
 ### <a id="wsp-toolkit-toArray">toArray</a>
