@@ -1,13 +1,16 @@
 import { Point } from "./Point";
 import { ICoord, pointSub } from "./internal/coordHelper";
-import { notExist } from "./notExist";
 
 export class Vector {
-  x: number = 0;
-  y: number = 0;
+  x: number;
+  y: number;
 
   constructor(p1?: Point, p2?: Point) {
-    if (!(p1 && p2)) return;
+    if (!(p1 && p2)) {
+      this.x = 0;
+      this.y = 0;
+      return;
+    }
     const { x, y } = pointSub(p1, p2);
     this.x = x;
     this.y = y;

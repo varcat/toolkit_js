@@ -1,10 +1,10 @@
 import { pointAdd, pointSub } from "./internal/coordHelper";
 
 export class Point {
-  x: number = 0;
-  y: number = 0;
+  x: number;
+  y: number;
 
-  constructor(x: number, y: number) {
+  constructor(x: number = 0, y: number = 0) {
     this.x = x;
     this.y = y;
   }
