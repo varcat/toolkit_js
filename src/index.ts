@@ -9,7 +9,6 @@ export { isNumber } from "./isNumber";
 export { isSafeNumber } from "./isSafeNumber";
 export { unique } from "./unique";
 export { currying } from "./currying";
-export { LinkedList } from "./LinkedList";
 export { sleep } from "./sleep";
 export { pipe } from "./pipe";
 export { or } from "./or";
@@ -18,5 +17,18 @@ export { debounce } from "./debounce";
 export { throttle } from "./throttle";
 export { once } from "./once";
 export { notExist } from "./notExist";
+
+export { LinkedList } from "./LinkedList";
 export { Vector } from "./Vector";
 export { Point } from "./Point";
+
+export { getMovingDirection } from "./coordinateHelper/getMovingDirection";
+export { getRotateAngle } from "./coordinateHelper/getRotateAngle";
+export { getRotateDirection } from "./coordinateHelper/getRotateDirection";
+export { getVectorLength } from "./coordinateHelper/getVectorLength";
+export { matrixTo } from "./coordinateHelper/matrixTo";
+export { pointAdd } from "./coordinateHelper/pointAdd";
+export { pointSub } from "./coordinateHelper/pointSub";
+
+export type { ICoord } from "./interface/ICoord";
+export type { IMovingDirection } from "./interface/IMovingDirection";

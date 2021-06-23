@@ -9,8 +9,7 @@
         "modules": false
       }
     ],
-    "@babel/preset-typescript",
-    "minify"
+    "@babel/preset-typescript"
   ],
   "plugins": [
     [
@@ -23,6 +22,7 @@
         "helpers": true,
         "regenerator": true
       }
-    ]
+    ],
+    "@babel/plugin-proposal-class-properties"
   ]
 }

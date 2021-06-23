@@ -1,4 +1,5 @@
-import { pointAdd, pointSub } from "./internal/coordHelper";
+import { pointAdd } from "./coordinateHelper/pointAdd";
+import { pointSub } from "./coordinateHelper/pointSub";
 
 export class Point {
   x: number;
