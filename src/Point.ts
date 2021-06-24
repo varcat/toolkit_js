@@ -1,5 +1,6 @@
 import { pointAdd } from "./coordinateHelper/pointAdd";
 import { pointSub } from "./coordinateHelper/pointSub";
+import { Vector } from "./Vector";
 
 export class Point {
   x: number;
@@ -22,5 +23,11 @@ export class Point {
     this.x = x;
     this.y = y;
     return this;
+  }
+  toVector(point?: Point): Vector {
+    if (point) {
+      return new Vector(this, point);
+    }
+    return Vector.of(this);
   }
 }
