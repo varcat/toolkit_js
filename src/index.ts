@@ -30,5 +30,8 @@ export { matrixTo } from "./coordinateHelper/matrixTo";
 export { pointAdd } from "./coordinateHelper/pointAdd";
 export { pointSub } from "./coordinateHelper/pointSub";
 
-export type { ICoord } from "./interface/ICoord";
-export type { IMovingDirection } from "./interface/IMovingDirection";
+import { ICoord as icoord } from "./interface/ICoord";
+import { IMovingDirection as imovingdirection } from "./interface/IMovingDirection";
+
+export type ICoord = icoord;
+export type IMovingDirection = imovingdirection;
