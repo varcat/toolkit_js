@@ -1,7 +1,6 @@
 {
   "presets": [
     "@babel/env",
-    "@babel/preset-typescript",
-    "minify"
+    "@babel/preset-typescript"
   ]
 }
