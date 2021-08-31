@@ -17,6 +17,9 @@ export { debounce } from "./debounce";
 export { throttle } from "./throttle";
 export { once } from "./once";
 export { notExist } from "./notExist";
+export { get } from "./get/index";
+export { isIterable } from "./isIterable/index";
+export { iterative } from "./iterative/index";
 
 export { LinkedList } from "./LinkedList";
 export { Vector } from "./Vector";
