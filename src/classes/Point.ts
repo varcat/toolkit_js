@@ -1,5 +1,5 @@
-import { pointAdd } from "./coordinateHelper/pointAdd";
-import { pointSub } from "./coordinateHelper/pointSub";
+import { pointAdd } from "../functions/pointAdd";
+import { pointSub } from "../functions/pointSub";
 import { Vector } from "./Vector";
 
 export class Point {
