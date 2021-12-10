@@ -1,8 +1,10 @@
-import { getRotateDirection } from "../functions/getRotateDirection/getRotateDirection";
-import { ICoord } from "../interface/ICoord";
-import { pointSub } from "../functions/pointSub";
-import { getVectorLength } from "../functions/getVectorLength/getVectorLength";
-import { getRotateAngle } from "../functions/getRotateAngle/getRotateAngle";
+import { ICoord } from "../../interface/ICoord";
+import {
+  getVectorLength,
+  getRotateAngle,
+  getRotateDirection,
+  pointSub,
+} from "../../functions";
 
 export class Vector {
   x: number;

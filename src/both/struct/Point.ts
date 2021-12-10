@@ -1,15 +1,9 @@
-import { pointAdd } from "../functions/pointAdd";
-import { pointSub } from "../functions/pointSub";
-import { Vector } from "./Vector";
+import { pointAdd } from "../functions";
+import { pointSub } from "../functions";
+import { Vector } from "./Vector/Vector";
 
 export class Point {
-  x: number;
-  y: number;
-
-  constructor(x: number = 0, y: number = 0) {
-    this.x = x;
-    this.y = y;
-  }
+  constructor(public x: number = 0, public y: number = 0) {}
 
   sub(p: Point) {
     const { x, y } = pointSub(this, p);

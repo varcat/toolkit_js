@@ -1,6 +1,6 @@
 import { isNumber } from "../isNumber/isNumber";
 import { isExist } from "../isExist/isExist";
-import { typeOf } from "../typeOf";
+import { typeOf } from "../typeOf/typeOf";
 
 export function isEmpty(
   x:

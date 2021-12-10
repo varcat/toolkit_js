@@ -1,4 +1,4 @@
-import { ICoord } from "../interface/ICoord";
+import { ICoord } from "../../interface/ICoord";
 
 export function pointAdd(p1: ICoord, p2: ICoord): ICoord {
   return {

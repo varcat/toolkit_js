@@ -1,5 +1,5 @@
 import { isEmpty } from "../isEmpty/isEmpty";
-import { notExist } from "../notExist";
+import { notExist } from "../notExist/notExist";
 import { propStrToList } from "./propStrToList";
 
 export function get(subject: any, props: string, defaultValue?: any): any;

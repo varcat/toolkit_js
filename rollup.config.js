@@ -11,13 +11,13 @@ const config = {
     {
       file: "dist/es/index.min.js",
       format: "es",
-      plugins: [terser()],
+      plugins: [],
     },
     {
       file: "dist/umd/index.min.js",
       name: "toolkit",
       format: "umd",
-      plugins: [terser()],
+      plugins: [],
     },
   ],
   plugins: [
@@ -31,6 +31,7 @@ const config = {
       extensions,
       exclude: "node_modules/**",
     }),
+    terser(),
   ],
 };
 

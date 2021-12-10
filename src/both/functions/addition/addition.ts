@@ -1,19 +1,16 @@
-import { typeOf } from "../typeOf";
-
-function add(xs: number[]): number {
-  let sum = 0;
-  for (let x of xs) {
-    sum += x;
-  }
-  return sum;
-}
-
 export function addition(...numbers: number[]): number {
-  if (numbers.length === 1) {
-    if (typeOf(numbers[0]) === "Array") {
-      return add(numbers[0] as unknown as number[]);
+  let result = 0;
+
+  function add(xs: number[]) {
+    for (let i = 0; i < xs.length; i += 1) {
+      if (typeof xs[i] === "number") {
+        result += xs[i];
+      } else if (Array.isArray(xs[i])) {
+        add(xs[i] as unknown as number[]);
+      }
     }
-    return numbers[0];
   }
-  return add(numbers.flat(Infinity));
+  add(numbers);
+
+  return result;
 }

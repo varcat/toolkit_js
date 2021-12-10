@@ -1,4 +1,4 @@
-import { notExist } from "./notExist";
+import { notExist } from "../notExist/notExist";
 
 interface IThrottleOpts {
   leading?: boolean;
