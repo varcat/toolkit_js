@@ -29,3 +29,4 @@ export { toggle } from "./toggle/toggle";
 export { toNumber } from "./toNumber/toNumber";
 export { typeOf } from "./typeOf/typeOf";
 export { unique } from "./unique/unique";
+export { toNumberStr } from "./toNumberStr";
