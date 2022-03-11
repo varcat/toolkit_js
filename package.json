@@ -7,6 +7,7 @@
   "types": "types/index.d.ts",
   "scripts": {
     "clear": "node scripts/rm",
+    "gm": "node scripts/genMarkDownDoc",
     "build": "tsc & rollup -c",
     "r": "rollup -c",
     "test": "jest",
