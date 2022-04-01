@@ -27,6 +27,9 @@ export function isEmpty(
   if (x instanceof Map) {
     return (x as Map<any, any>).size === 0;
   }
+  if (x instanceof FormData) {
+    return x.keys().next().done ?? true;
+  }
   if (typeOf(x) === "Object") {
     return Object.keys(x as object).length === 0;
   }
