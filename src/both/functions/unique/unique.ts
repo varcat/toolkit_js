@@ -1,14 +1,24 @@
-export type TUniquePropertyFn<T> = (item: T) => any
+import { isExist } from "../isExist/isExist";
+import { prop } from "../prop";
 
-export function unique<T>(arr: Array<T>, property?: string | TUniquePropertyFn<T>) {
+export type TUniquePropertyFn<T> = (item: T) => any;
+
+export function unique<T>(
+  arr: Array<T>,
+  property?: string | Array<string | number> | TUniquePropertyFn<T>
+) {
   if (!property) {
-    return [...new Set(arr)]
+    return [...new Set(arr)];
   }
   const record = new Map();
   const result = [];
   for (let crt of arr) {
-    // @ts-ignore
-    const val = typeof property === 'function' ? property(crt) : crt[property];
+    const val =
+      typeof property === "function"
+        ? property(crt)
+        : typeof crt === "object" && isExist(crt)
+        ? prop(property, crt)
+        : crt;
     if (record.get(val)) {
       continue;
     }

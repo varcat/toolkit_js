@@ -2,7 +2,7 @@ import { toNumber } from "../toNumber/toNumber";
 
 export function addition(numbers: number[]): number;
 export function addition(...numbers: number[]): number;
-export function addition(numbers: any): number {
+export function addition(...numbers: any): number {
   let result = 0;
 
   function add(xs: number[]) {

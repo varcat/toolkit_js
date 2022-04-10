@@ -8,8 +8,14 @@ describe("toNumberStr", () => {
     expect(toNumberStr("")).toBe("0");
     expect(toNumberStr([])).toBe("0");
     expect(toNumberStr([1])).toBe("1");
-    expect(toNumberStr(undefined)).toBe("0");
+    expect(toNumberStr([1, "2", ".", "3"])).toBe("12.3");
+    expect(toNumberStr([1, "2", ".-", "3"])).toBe("12.3");
+    expect(toNumberStr(undefined as unknown as any)).toBe("0");
     expect(toNumberStr(false)).toBe("0");
     expect(toNumberStr(true)).toBe("1");
+    expect(toNumberStr("-3.10")).toBe("-3.10");
+    expect(toNumberStr("-3.-10")).toBe("-3.10");
+    expect(toNumberStr("--1..01")).toBe("1.01");
+    expect(toNumberStr(".asdf00")).toBe("0.00");
   });
 });
