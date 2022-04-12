@@ -2,20 +2,12 @@ import { isEmpty } from "..";
 
 enum NumberType {
   unknown,
-  signed,
-  unsigned,
   int,
   float,
   floatZeroDecimal,
-  uint,
-  uFloat,
-  uFloatZeroDecimal,
   zero,
-  uZero,
   zeroDot,
-  uZeroDot,
   floatDot,
-  uFloatDot,
 }
 
 const numberMap: { [k: string]: boolean } = {
@@ -44,7 +36,8 @@ export function toNumberStr(
   if (Array.isArray(x)) {
     return toNumberStr(x.flat(Infinity).join(""));
   }
-  if (typeof x !== "string") return "0";
+  if (typeof x !== "string") return isEmpty(x) ? "0" : "1";
+  let symbol = "";
   let res = "";
   let resType: NumberType = NumberType.unknown;
   // 小数点出现的index
@@ -58,24 +51,23 @@ export function toNumberStr(
   const initResType = (char: string) => {
     switch (char) {
       case "-":
-        resType = NumberType.signed;
-        res += char;
+        symbol = symbol ? "" : "-";
         return;
       case "+":
-        resType = NumberType.unsigned;
+        symbol = symbol ? symbol : "";
         return;
       case ".":
-        resType = NumberType.uFloatDot;
-        res += "0.";
+        resType = NumberType.floatDot;
+        res = "0.";
         pointIndex = 1;
         return;
       case "0":
-        resType = NumberType.uZero;
-        res = "0";
+        resType = NumberType.zero;
+        res = char;
         return;
     }
     if (numberMap[char]) {
-      resType = NumberType.uint;
+      resType = NumberType.int;
       res += char;
     }
   };
@@ -87,24 +79,7 @@ export function toNumberStr(
       continue;
     }
     switch (resType) {
-      // "-"
-      case NumberType.signed:
-        if (l === "0") {
-          resType = NumberType.zero;
-          res += l;
-        } else if (l === ".") {
-          resType = NumberType.zeroDot;
-          res = "-0.";
-          pointIndex = 2;
-        } else if (numberMap[l]) {
-          resType = NumberType.int;
-          res += l;
-        } else if (l === "-") {
-          resType = NumberType.unsigned;
-          res = "";
-        }
-        continue;
-      // "-0"
+      // "0"
       case NumberType.zero:
         if (l === "0") continue;
         if (l === ".") {
@@ -113,10 +88,10 @@ export function toNumberStr(
           res += l;
         } else if (numberMap[l]) {
           resType = NumberType.int;
-          res = `-${l}`;
+          res = l;
         }
         continue;
-      // "-0."
+      // "0."
       case NumberType.zeroDot:
         if (l === "0") {
           resType = NumberType.floatZeroDecimal;
@@ -127,43 +102,7 @@ export function toNumberStr(
           nonzeroEnd = res.length;
         }
         continue;
-      // ""
-      case NumberType.unsigned:
-        if (l === "0") {
-          resType = NumberType.uZero;
-          res += l;
-        } else if (l === ".") {
-          resType = NumberType.uZeroDot;
-          res = "0.";
-        } else if (numberMap[l]) {
-          resType = NumberType.int;
-          res += l;
-        } else if (l === "-") {
-          resType = NumberType.signed;
-          res = l;
-        }
-        continue;
-      case NumberType.uZero:
-        if (l === "0") continue;
-        if (l === ".") {
-          resType = NumberType.uZeroDot;
-          pointIndex = res.length;
-          res += l;
-        } else if (numberMap[l]) {
-          resType = NumberType.uint;
-          res = l;
-        }
-        continue;
-      case NumberType.uZeroDot:
-        if (l === "0") {
-          resType = NumberType.uFloatZeroDecimal;
-          res += l;
-        } else if (numberMap[l]) {
-          resType = NumberType.uFloat;
-          res += l;
-          nonzeroEnd = res.length;
-        }
-        continue;
+      // "[1-9]+\d*"
       case NumberType.int:
         if (l === ".") {
           resType = NumberType.floatDot;
@@ -173,32 +112,13 @@ export function toNumberStr(
           res += l;
         }
         continue;
-      case NumberType.uint:
-        if (l === ".") {
-          resType = NumberType.uFloatDot;
-          pointIndex = res.length;
-          res += l;
-        } else if (numberMap[l]) {
-          res += l;
-        }
-        continue;
-      // "-\d+."
+      // "\d+\."
       case NumberType.floatDot:
         if (l === "0") {
           resType = NumberType.floatZeroDecimal;
           res += l;
         } else if (numberMap[l]) {
           resType = NumberType.float;
-          res += l;
-          nonzeroEnd = res.length;
-        }
-        continue;
-      case NumberType.uFloatDot:
-        if (l === "0") {
-          resType = NumberType.uFloatZeroDecimal;
-          res += l;
-        } else if (numberMap[l]) {
-          resType = NumberType.uFloat;
           res += l;
           nonzeroEnd = res.length;
         }
@@ -213,17 +133,7 @@ export function toNumberStr(
           nonzeroEnd = res.length;
         }
         continue;
-      case NumberType.uFloatZeroDecimal:
-        if (l === "0") {
-          res += l;
-        } else if (numberMap[l]) {
-          resType = NumberType.uFloat;
-          res += l;
-          nonzeroEnd = res.length;
-        }
-        continue;
       case NumberType.float:
-      case NumberType.uFloat:
         if (numberMap[l]) {
           res += l;
           if (l !== "0") {
@@ -232,14 +142,15 @@ export function toNumberStr(
         }
     }
   }
-  if (resType === NumberType.zeroDot) return "-0";
-  if (resType === NumberType.uZeroDot) return "0";
+  if (resType === NumberType.zeroDot) return symbol ? "0" : "-0";
   if (
     resType === NumberType.floatZeroDecimal ||
-    resType === NumberType.uFloatZeroDecimal
+    resType === NumberType.floatDot
   )
-    return res.slice(0, pointIndex);
-  if (resType === NumberType.float || resType === NumberType.uFloat)
-    return res.slice(0, nonzeroEnd);
-  return isEmpty(res) || resType === NumberType.unknown ? "0" : res;
+    return `${symbol}${res.slice(0, pointIndex)}`;
+  if (resType === NumberType.float)
+    return `${symbol}${res.slice(0, nonzeroEnd)}`;
+  return isEmpty(res) || resType === NumberType.unknown
+    ? `${symbol}0`
+    : `${symbol}${res}`;
 }
