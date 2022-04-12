@@ -7,12 +7,12 @@ export function propStrToList(props: string): Array<string | number> {
   const quotations: Array<string> = [];
   let text = "";
 
-  const isInt = (token: string) => /^[0-9]+$/.test(token);
+  const isInt = (token: string) => /^\d+$/.test(token);
   const isQuotation = (x: string) => [`'`, `"`].includes(x);
   const last = (xs: Array<string>) => xs[xs.length - 1];
 
-  const initToken = () => {
-    if (!isEmpty(text)) {
+  const initToken = (isBraceMatching?: boolean) => {
+    if (!isEmpty(text) || isBraceMatching === true) {
       if (isInt(text)) {
         res.push(parseInt(text));
       } else {
@@ -24,11 +24,13 @@ export function propStrToList(props: string): Array<string | number> {
 
   for (let alpha of props) {
     if (isQuotation(alpha)) {
+      // 匹配成对的引号
       if (last(quotations) === alpha) {
         quotations.pop();
-        initToken();
+        initToken(true);
         continue;
       }
+      initToken();
       quotations.push(alpha);
       continue;
     }
@@ -55,10 +57,10 @@ export function propStrToList(props: string): Array<string | number> {
   }
   initToken();
   if (!isEmpty(leftBrackets)) {
-    throw new SyntaxError("括号不匹配");
+    throw new SyntaxError("括号数量不匹配");
   }
   if (!isEmpty(quotations)) {
-    throw new SyntaxError("引号不匹配");
+    throw new SyntaxError("引号数量不匹配");
   }
   return res;
 }
