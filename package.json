@@ -1,6 +1,6 @@
 {
   "name": "wsp-toolkit",
-  "version": "0.5.7",
+  "version": "0.5.9",
   "description": "Personal toolbox",
   "main": "dist/umd/index.min.js",
   "module": "dist/es/index.min.js",
@@ -11,7 +11,7 @@
     "build": "tsc & rollup -c",
     "r": "rollup -c",
     "test": "jest",
-    "pub": "npm run build & npm publish --access public & npm run clear"
+    "pub": "npm publish --access public"
   },
   "repository": {
     "type": "git",
