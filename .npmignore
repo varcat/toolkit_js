@@ -114,3 +114,4 @@ babel.config.json
 tsconfig.json
 .editorconfig
 src
+docs
