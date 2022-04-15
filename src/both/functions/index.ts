@@ -1,6 +1,7 @@
 export { addition } from "./addition/addition";
 export { and } from "./and/and";
-export { to as awaitToJs } from "./awaitToJs/awaitToJs";
+export { awaitToJs } from "./awaitToJs/awaitToJs";
+export { concatMap } from "./concatMap";
 export { currying } from "./currying/currying";
 export { debounce } from "./debounce/debounce";
 export { get } from "./get/index";
