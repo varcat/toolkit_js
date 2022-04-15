@@ -18,6 +18,7 @@ describe("toNumberStr", () => {
     expect(toNumberStr("1,999,120.001")).toBe("1999120.001");
     expect(toNumberStr("1,999,120.0010")).toBe("1999120.001");
     expect(toNumberStr("--1,999,120.0010")).toBe("1999120.001");
+    expect(toNumberStr("---1,999,120.0010")).toBe("-1999120.001");
     expect(toNumberStr("-+1,999,120.0010")).toBe("-1999120.001");
     expect(toNumberStr("+-1,999,120.0010")).toBe("-1999120.001");
     expect(toNumberStr("++1,999,120.0010")).toBe("1999120.001");

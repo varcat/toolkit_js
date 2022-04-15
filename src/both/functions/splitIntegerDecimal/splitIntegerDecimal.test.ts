@@ -22,7 +22,7 @@ describe("splitIntegerDecimal.ts", () => {
     expect(splitIntegerDecimal(".12")).toEqual(["", "12"]);
     expect(splitIntegerDecimal("1.12")).toEqual(["1", "12"]);
     expect(splitIntegerDecimal("1e12.12")).toEqual(["1e12", "12"]);
-    expect(splitIntegerDecimal(100.0)).toEqual([100.0, ""]);
+    expect(splitIntegerDecimal(100.0)).toEqual(["100", ""]);
     expect(splitIntegerDecimal("10,000.ab")).toEqual(["10,000.ab", ""]);
     expect(splitIntegerDecimal(null as unknown as any)).toEqual([null, ""]);
   });

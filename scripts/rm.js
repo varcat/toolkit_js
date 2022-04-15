@@ -1,5 +1,2 @@
-const del = require('del');
-del.sync([
-  'types',
-  'dist',
-]);
+const del = require("del");
+del.sync(["types"]);

@@ -1,4 +1,4 @@
-export function toggle<T, Args>(fns: Array<(args?: Args) => T>) {
+export function toggle<T, Args>(fns: Array<any>) {
   const endIndex = fns.length - 1;
   let crtIndex = 0;
   return function (args?: Args) {
@@ -7,6 +7,6 @@ export function toggle<T, Args>(fns: Array<(args?: Args) => T>) {
     if (crtIndex > endIndex) {
       crtIndex = 0;
     }
-    return fn(args);
-  }
+    return typeof fn === "function" ? fn(args) : fn;
+  };
 }

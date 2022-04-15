@@ -1,7 +1,10 @@
 import { isSafeNumber } from "../isSafeNumber/isSafeNumber";
 
-export function splitIntegerDecimal<T>(amount: T): [T, string] {
-  const res: [T, string] = [amount, ""];
+export function splitIntegerDecimal(amount: number | string): [string, string] {
+  if (isSafeNumber(amount)) {
+    amount = amount.toString();
+  }
+  const res: [string, string] = [amount as string, ""];
   if (typeof amount !== "string") {
     return res;
   }
@@ -11,7 +14,7 @@ export function splitIntegerDecimal<T>(amount: T): [T, string] {
   if (!hasOnlyPoint || typeof match?.[1] !== "string") return res;
   const isDecimal = isSafeNumber(parseInt(match[1]));
   if (!isDecimal) return res;
-  res[0] = amount.substring(0, pointIndex) as unknown as T;
+  res[0] = amount.substring(0, pointIndex);
   res[1] = amount.substring(pointIndex + 1, amount.length);
   return res;
 }
