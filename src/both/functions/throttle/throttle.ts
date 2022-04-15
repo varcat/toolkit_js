@@ -16,8 +16,8 @@ export function throttle<T extends Function>(
   const trailing = opts.trailing ?? true;
 
   let timerId: any;
-  let lastInvokeTime: DOMTimeStamp | null = null;
-  let lastCallTime: DOMTimeStamp | null = null;
+  let lastInvokeTime: number | null = null;
+  let lastCallTime: number | null = null;
 
   function reset() {
     timerId = null;

@@ -79,7 +79,7 @@ export function toNumberStr(
       continue;
     }
     switch (resType) {
-      // "0"
+      // @ts-ignore "0" 这里能走进去，ts错误检查
       case NumberType.zero:
         if (l === "0") continue;
         if (l === ".") {
