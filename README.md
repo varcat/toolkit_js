@@ -2,7 +2,7 @@
 
 一些常用工具函数。
 
-## Usage
+## [Usage](https://varcat.github.io/toolkit_js/#/zh-cn/quickStart)
 
 ```npm
 npm i wsp-toolkit
@@ -19,4 +19,4 @@ import { isExist } from "wsp-toolkit";
 const { typeOf } = require("wsp-toolkit");
 ```
 
-## [API文档]()
+## [API文档](https://varcat.github.io/toolkit_js/#/zh-cn/api/)
