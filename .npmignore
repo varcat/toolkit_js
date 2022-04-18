@@ -115,4 +115,3 @@ tsconfig.json
 .editorconfig
 docs
 rollup.config.js
-dist/**/*.map
