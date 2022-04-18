@@ -4,25 +4,7 @@
   ],
   "presets": [
     [
-      "@babel/env",
-      {
-        "modules": false
-      }
-    ],
-    "@babel/preset-typescript"
-  ],
-  "plugins": [
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "corejs": {
-          "version": 3,
-          "proposals": true
-        },
-        "helpers": true,
-        "regenerator": true
-      }
-    ],
-    "@babel/plugin-proposal-class-properties"
+      "@babel/env"
+    ]
   ]
 }

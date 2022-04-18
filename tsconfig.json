@@ -4,18 +4,29 @@
     "src/**/*.test.ts"
   ],
   "compilerOptions": {
+    "baseUrl": ".",
     "rootDir": "./src",
+    "outDir": "dist",
+    "sourceMap": false,
+    "noEmit": true,
+
     "target": "ESNEXT",
     "module": "ESNEXT",
-    "emitDeclarationOnly": true,
-    "declaration": true,
-    "declarationDir": "types",
-    "declarationMap": true,
     "isolatedModules": true,
-    "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "Node"
+
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "importsNotUsedAsValues": "error",
+    "importHelpers": true,
+    "noEmitHelpers": true
   }
 }

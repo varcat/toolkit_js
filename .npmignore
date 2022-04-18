@@ -113,5 +113,6 @@ scripts
 babel.config.json
 tsconfig.json
 .editorconfig
-src
 docs
+rollup.config.js
+dist/**/*.map

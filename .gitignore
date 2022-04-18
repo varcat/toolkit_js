@@ -107,4 +107,4 @@ typings/
 .vscode
 
 # 以下单独
-types
+dist

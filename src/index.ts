@@ -1,4 +1,5 @@
-export * from "./both/index";
+export * from "./functions/index";
+export * from "./struct/index";
 
-export type { ICoord } from "./both/interface/ICoord";
-export type { IMovingDirection } from "./both/interface/IMovingDirection";
+export type { ICoord } from "./interface/ICoord";
+export type { IMovingDirection } from "./interface/IMovingDirection";
