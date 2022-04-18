@@ -68,7 +68,7 @@ function createConfig(format, output, plugins = []) {
 
   const isGlobalBuild = format === "global";
 
-  if (isGlobalBuild) output.name = "WspToolkit";
+  if (isGlobalBuild) output.name = "toolkit";
 
   const nodePlugins = [rollupNodeResolve(), rollupCommonjs()];
 
