@@ -175,6 +175,13 @@ const isExists = iterative(isExist);
 isExists([ null, 1, {} ]); // [ false, true, true ]
 ```
 
+## last
+
+```typescript
+const arr = [1, 2];
+last(arr); // 2;
+```
+
 ## matrixTo
 
 将获取到Dom元素的transform字符串转换为
@@ -251,6 +258,8 @@ const arr = [1, 2, 3, 4];
 const addFn = (sum, n) => sum + n;
 reduce(arr, addFn, 0); // 10
 ```
+
+## safeLast
 
 ## sleep
 ```javascript
