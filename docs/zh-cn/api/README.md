@@ -16,6 +16,42 @@ and(1, 0) // false
 and(1, 0 !== null) // true
 ```
 
+## awaitToJs
+```javascript
+const queryFn = (id) => service.findUserById(id);
+
+// 常规捕获错误
+(async () => {
+    this.loading = true;
+    try {
+      queryFn(1);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      this.loading = false;
+    }
+})();
+
+// 使用awaitToJs处理错误
+(async () => {
+  this.loading = true;
+  const [err, data] = await awaitToJs(queryFn(1));
+  this.loading = false;
+  if (err) console.error(e);
+})();
+```
+
+## concatMap
+
+Array.concat与Array.map的合并操作
+
+```typescript
+const arr1 = [1, 2, 3];
+const arr2 = [10, 20, 30];
+
+concatMap((x) => x * 10, arr1, arr2); // [10, 20, 30, 100, 200, 300]
+```
+
 ## currying
 柯里化：把接受多个参数的函数变换成接受一个单一参数的函数，并且返回接受余下的参数且返回结果的新函数
 ```typescript
@@ -46,6 +82,20 @@ type debounce<T extends Function> = (
     // 额外配置，参见上方 IOpts
     options?: IOpts
 ) => T;
+```
+
+## get
+
+```typescript
+const obj = { name: 'wsp', dept: { id: 1, name: 'dept', members: [ { name: 'n1' }, { name: 'n2' } ] } };
+
+get(obj, `dept.id`); // 1
+get(obj, `dept.members[0].name`); // 'n1';
+get(obj, `dept.members.0.name`); // 'n1';
+// 支持数组
+get(obj, ["dept", "members", 0, "name"]); // 'n1';
+// 获取不存在的属性
+get(obj, `aa.bb.cc.dd`); // undefined
 ```
 
 ## identity
@@ -90,6 +140,14 @@ isExist([]) // true
 isExist([1,2,3]) // true
 ```
 
+## isIterable
+
+判断是否可迭代，实现了`Symbol.iterator`接口
+
+```typescript
+isIterable([]); // true
+```
+
 ## isNumber
 ```javascript
 isNumber(0) // true
@@ -106,6 +164,27 @@ isSafeNumber(Infinity) // false
 isSafeNumber(0) // true
 isSafeNumber(Number.MIN_SAFE_INTEGER) // true
 isSafeNumber(Number.MAX_SAFE_INTEGER) // true
+```
+
+## iterative
+将只支持单个参数的函数转变为可支持多个入参的函数
+```typescript
+// isExist 只能判断一个入参
+isExist(null); // false
+const isExists = iterative(isExist);
+isExists([ null, 1, {} ]); // [ false, true, true ]
+```
+
+## matrixTo
+
+将获取到Dom元素的transform字符串转换为
+```typescript
+type TTransformInfo = {
+  x: number;
+  y: number;
+  scale: number;
+  rotate: number;
+};
 ```
 
 ## notExist
@@ -148,12 +227,29 @@ or(() => false, undefined, 0, "") // false
 
 管道函数，js[管道运算符](https://es6.ruanyifeng.com/#docs/proposals#%E7%AE%A1%E9%81%93%E8%BF%90%E7%AE%97%E7%AC%A6)
 
-```javascript
-const res = pipe(
-  (str: string, count: number) => str.repeat(count),
-  (str: string) => str.toUpperCase()
-)("a", 2);
-res // "AA"
+```typescript
+const repeatStr = (str: string, count: number) => str.repeat(count);
+const upperCase = (str: string) => str.toUpperCase();
+
+const repeatAndUpperCase = pipe(
+  repeatStr,
+  upperCase,
+);
+repeatAndUpperCase("a", 2); // "AA"
+```
+
+## prop
+prop是currying化的[get](#get)
+```typescript
+const obj = { user: {name: 'n'} };
+prop(`name.name`)(obj); // 'n'
+```
+
+## reduce
+```typescript
+const arr = [1, 2, 3, 4];
+const addFn = (sum, n) => sum + n;
+reduce(arr, addFn, 0); // 10
 ```
 
 ## sleep
@@ -163,6 +259,15 @@ res // "AA"
   await sleep(10_000); // 等待10s
   // 其他代码
 })()
+```
+
+## splitIntegerDecimal
+
+拆分整数与小数部分, 还可以配合[toNumberStr](#toNumberStr)使用
+
+```typescript
+splitIntegerDecimal("1"); // ["1", ""]
+splitIntegerDecimal("100.00"); // ["100", "00"]
 ```
 
 ## throttle
@@ -200,7 +305,19 @@ toArray(false) // [false]
 toArray(new Set([1, 2])) // [1, 2]
 ```
 
-## <a id="wsp-toolkit-toNumber">toNumber</a>
+## toggle
+
+在给定状态或函数中切换
+
+```typescript
+const toggleStatus = toggle(["one", "two", () => "three"]);
+toggleStatus(); // "one"
+toggleStatus(); // "two"
+toggleStatus(); // "three"
+toggleStatus(); // "one"
+```
+
+## toNumber
 ```javascript
 toNumber(100) // 100
 toNumber('10,000') // 10000
@@ -211,7 +328,19 @@ toNumber(NaN, {defaultValue: 100}) // 100
 toNumber(0, {defaultValue: 100}) // 0
 ```
 
-## <a id="wsp-toolkit-typeOf">typeOf</a>
+## toNumberStr
+```typescript
+toNumberStr(12); // "12"
+toNumberStr("011"); // "11"
+toNumberStr("-.100"); // "-0.1"
+toNumberStr("0000"); // "0"
+toNumberStr("1,999,120.001000"); // "1999120.001"
+```
+
+## typeOf
+
+内部使用`Object.prototype.toString.call`获取类型
+
 ```javascript
 typeOf('') // String
 typeOf(0) // Number
@@ -225,15 +354,21 @@ typeOf(new Map()) // Map
 typeOf(new FormData()) // FormData
 ```
 
-## <a id="wsp-toolkit-unique">unique</a>
+## unique
+
+去重
+
 ```javascript
-unique([1, 1, 3]) // [1, 3]
+// 基础类型去重
+unique([1, 1, 3]); // [1, 3]
 
+// 通过指定属性去重
 arr = [{id: 1}, {id: 2}, {id: 1}, {id: 2}];
-unique(arr, 'id') // [{id: 1}, {id: 2}]
+unique(arr, 'id'); // [{id: 1}, {id: 2}]
 
+// 使用函数获取去重的属性值
 arr = [{info: {id: 1}}, {info: {id: 2}}, {info: {id: 3}}, {info: {id: 2}}];
-unique(arr, x => x.info.id)
+unique(arr, x => x.info.id);
 // [
 //   {info: {id: 1}},
 //   {info: {id: 2}},
@@ -241,17 +376,7 @@ unique(arr, x => x.info.id)
 // ]
 ```
 
-## <a id="wsp-toolkit-Point">Point</a>
-```javascript
-
-```
-
-## <a id="wsp-toolkit-LinkedList">LinkedList</a>
-```javascript
-
-```
-
-## <a id="wsp-toolkit-Vector">Vector</a>
+## Vector
 
 **ICoord**
 ```typescript
