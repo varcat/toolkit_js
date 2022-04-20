@@ -1,14 +1,19 @@
-export interface ITypeOfParams {
-  fullName: boolean;
-}
+type Result =
+  | "Object"
+  | "Array"
+  | "Function"
+  | "Symbol"
+  | "Undefined"
+  | "Null"
+  | "Number"
+  | "Set"
+  | "Map"
+  | "FormData"
+  | "URLSearchParams"
+  | "Boolean"
+  | string;
 
-export function typeOf(
-  x: any,
-  { fullName = false } = {} as ITypeOfParams
-): string {
+export function typeOf(x: any): Result {
   const type = Object.prototype.toString.call(x);
-  if (fullName) {
-    return type;
-  }
-  return type.replace(/\[\w+ (\w+)]/, "$1");
+  return type.replace(/\[\w+ (\w+)]/, "$1") as Result;
 }
