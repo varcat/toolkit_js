@@ -18,7 +18,7 @@ and(1, 0 !== null) // true
 
 ## ~~awaitToJs~~
 
-`version >= 0.6`后将移除，请使用[to](#to)
+功能与[to](#to)一样，请使用[to](#to)，该函数`version >= 0.6`后将移除，
 
 ## concatMap
 
@@ -392,6 +392,33 @@ unique(arr, x => x.info.id);
 // ]
 ```
 
+## zip
+
+配对操作
+
+```typescript
+const a1 = [1, 3, 5];
+const a2 = [1, 2, 3, 4, 5];
+const a3 = [1, 2, 3, 4];
+zip(a1, a2, a3);
+// 输出 [
+//   [1, 1, 1],
+//   [3, 2, 2],
+//   [5, 3, 3],
+// ]
+```
+
+## zipWith
+
+配对操作
+
+```typescript
+const arr1 = [1, 2, 3];
+const arr2 = [1, 2, 3, 4];
+const arr3 = [5, 5];
+zipWidth((a, b) => a + b, arr1, arr2, arr3); // [ 7, 9 ]
+```
+
 ## Vector
 
 **ICoord**
@@ -445,31 +472,4 @@ const v1 = Vector.of({x: 5, y: 0});
 const v2 = Vector.of({x: 10, y: 0});
 v1.getScale(v2); // 0.5
 v2.getScale(v1); // 2
-```
-
-## zip
-
-配对操作
-
-```typescript
-const a1 = [1, 3, 5];
-const a2 = [1, 2, 3, 4, 5];
-const a3 = [1, 2, 3, 4];
-zip(a1, a2, a3);
-// 输出 [
-//   [1, 1, 1],
-//   [3, 2, 2],
-//   [5, 3, 3],
-// ]
-```
-
-## zipWith
-
-配对操作
-
-```typescript
-const arr1 = [1, 2, 3];
-const arr2 = [1, 2, 3, 4];
-const arr3 = [5, 5];
-zipWidth((a, b) => a + b, arr1, arr2, arr3); // [ 7, 9 ]
 ```
