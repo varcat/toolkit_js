@@ -1,6 +1,5 @@
 export { addition } from "./addition/addition";
 export { and } from "./and/and";
-export { awaitToJs } from "./awaitToJs/awaitToJs";
 export { concatMap } from "./concatMap";
 export { currying } from "./currying/currying";
 export { debounce } from "./debounce/debounce";
@@ -30,9 +29,14 @@ export { safeLast } from "./safeLast";
 export { sleep } from "./sleep/sleep";
 export { splitIntegerDecimal } from "./splitIntegerDecimal/splitIntegerDecimal";
 export { throttle } from "./throttle/throttle";
+export { to } from "./to/awaitToJs";
 export { toArray } from "./toArray/toArray";
 export { toggle } from "./toggle/toggle";
 export { toNumber } from "./toNumber/toNumber";
 export { toNumberStr } from "./toNumberStr";
 export { typeOf } from "./typeOf/typeOf";
 export { unique } from "./unique/unique";
+export { zip } from "./zip";
+export { zipWidth } from "./zipWith";
+
+export { to as awaitToJs } from "./to/awaitToJs";
