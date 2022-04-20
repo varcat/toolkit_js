@@ -1,3 +1,5 @@
+import { isExist } from "../isExist/isExist";
+
 export const reduce = <T, U>(
   array: T[],
   callback: (
@@ -6,13 +8,13 @@ export const reduce = <T, U>(
     currentIndex: number,
     array: T[]
   ) => U,
-  initialValue: U
+  initialValue?: U
 ): U => {
   if (!Array.isArray(array)) {
     throw new TypeError("Expected array");
   }
   let result = (initialValue ?? array[0]) as U;
-  for (let i = 0; i < array.length; i += 1) {
+  for (let i = isExist(initialValue) ? 0 : 1; i < array.length; i += 1) {
     result = callback(result, array[i], i, array);
   }
   return result;

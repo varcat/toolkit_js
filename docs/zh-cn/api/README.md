@@ -16,30 +16,9 @@ and(1, 0) // false
 and(1, 0 !== null) // true
 ```
 
-## awaitToJs
-```javascript
-const queryFn = (id) => service.findUserById(id);
+## ~~awaitToJs~~
 
-// 常规捕获错误
-(async () => {
-    this.loading = true;
-    try {
-      queryFn(1);
-    } catch (e) {
-      console.error(e);
-    } finally {
-      this.loading = false;
-    }
-})();
-
-// 使用awaitToJs处理错误
-(async () => {
-  this.loading = true;
-  const [err, data] = await awaitToJs(queryFn(1));
-  this.loading = false;
-  if (err) console.error(e);
-})();
-```
+`version >= 0.6`后将移除，请使用[to](#to)
 
 ## concatMap
 
@@ -301,6 +280,34 @@ type debounce<T extends Function> = (
 ) => T;
 ```
 
+## to
+
+不使用try...catch... 优雅捕获Promise错误
+
+```javascript
+const queryFn = (id) => service.findUserById(id);
+
+// 常规捕获错误
+(async () => {
+    this.loading = true;
+    try {
+      queryFn(1);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      this.loading = false;
+    }
+})();
+
+// 使用 to 处理错误
+(async () => {
+  this.loading = true;
+  const [err, data] = await to(queryFn(1));
+  this.loading = false;
+  if (err) console.error(e);
+})();
+```
+
 ## toArray
 ```javascript
 toArray('abc') // ['a', 'b', 'c']
@@ -438,4 +445,31 @@ const v1 = Vector.of({x: 5, y: 0});
 const v2 = Vector.of({x: 10, y: 0});
 v1.getScale(v2); // 0.5
 v2.getScale(v1); // 2
+```
+
+## zip
+
+配对操作
+
+```typescript
+const a1 = [1, 3, 5];
+const a2 = [1, 2, 3, 4, 5];
+const a3 = [1, 2, 3, 4];
+zip(a1, a2, a3);
+// 输出 [
+//   [1, 1, 1],
+//   [3, 2, 2],
+//   [5, 3, 3],
+// ]
+```
+
+## zipWith
+
+配对操作
+
+```typescript
+const arr1 = [1, 2, 3];
+const arr2 = [1, 2, 3, 4];
+const arr3 = [5, 5];
+zipWidth((a, b) => a + b, arr1, arr2, arr3); // [ 7, 9 ]
 ```
