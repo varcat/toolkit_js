@@ -21,6 +21,7 @@ export { notExist } from "./notExist/notExist";
 export { once } from "./once/once";
 export { or } from "./or/or";
 export { pipe } from "./pipe/pipe";
+export { plus } from "./plus";
 export { pointAdd } from "./pointAdd/pointAdd";
 export { pointSub } from "./pointSub/pointSub";
 export { prop } from "./prop";
