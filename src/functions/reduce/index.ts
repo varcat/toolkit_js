@@ -1,4 +1,5 @@
 import { isExist } from "../isExist/isExist";
+import { notExist } from "../notExist/notExist";
 
 export const reduce = <T, U>(
   array: T[],
@@ -10,8 +11,8 @@ export const reduce = <T, U>(
   ) => U,
   initialValue?: U
 ): U => {
-  if (!Array.isArray(array)) {
-    throw new TypeError("Expected array");
+  if (notExist(array)) {
+    return initialValue!;
   }
   let result = (initialValue ?? array[0]) as U;
   for (let i = isExist(initialValue) ? 0 : 1; i < array.length; i += 1) {
