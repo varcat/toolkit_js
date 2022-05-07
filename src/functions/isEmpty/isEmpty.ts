@@ -21,14 +21,14 @@ export function isEmpty(
   if (Array.isArray(x)) {
     return x.length === 0;
   }
-  if (x instanceof Set) {
+  if (typeOf(x) === "Set") {
     return (x as Set<any>).size === 0;
   }
-  if (x instanceof Map) {
+  if (typeOf(x) === "Map") {
     return (x as Map<any, any>).size === 0;
   }
-  if (x instanceof FormData) {
-    return x.keys().next().done ?? true;
+  if (typeOf(x) === "FormData") {
+    return (x as FormData).keys().next().done ?? true;
   }
   if (typeOf(x) === "Object") {
     return Object.keys(x as object).length === 0;
