@@ -2,6 +2,9 @@ import { multipliedBy } from "./index";
 import { toNumberStr } from "../toNumberStr";
 
 describe("multipliedBy", () => {
+  test("one", () => {
+    expect(multipliedBy("0.100", "0.2")).toEqual("0.02");
+  });
   test("normal", () => {
     expect(multipliedBy("1", "1")).toEqual("1");
     expect(multipliedBy("0.1", "0.2")).toEqual("0.02");

@@ -1,4 +1,5 @@
-import { getPrecision, processPrecision } from "../plus";
+import { getPrecision } from "../getPrecision";
+import { movePrecision } from "../../internal/movePrecision";
 
 export function multipliedBy(a: string, b: string): string {
   const ap = getPrecision(a);
@@ -7,5 +8,6 @@ export function multipliedBy(a: string, b: string): string {
   const maxPrecision = Math.max(ap, bp);
   const aVal = a.replace(".", "") + "0".repeat(maxPrecision - ap);
   const bVal = b.replace(".", "") + "0".repeat(maxPrecision - bp);
-  return processPrecision((BigInt(aVal) * BigInt(bVal)).toString(), precision);
+  console.log("===result", BigInt(aVal) + BigInt(bVal));
+  return movePrecision((BigInt(aVal) * BigInt(bVal)).toString(), precision);
 }
