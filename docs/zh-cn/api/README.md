@@ -173,6 +173,16 @@ type TTransformInfo = {
 };
 ```
 
+## multipliedBy
+
+任意大数,保证精确的乘法，内部使用[Bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)实现，需自行评估兼容性
+
+```typescript
+multipliedBy('0.1', '0.200') // '0.02'
+multipliedBy('2.33', '7.01') // '16.3333'
+```
+
+
 ## notExist
 ```javascript
 notExist(null) // true
