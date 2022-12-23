@@ -3,10 +3,10 @@ import { multipliedBy } from "../../functions/multipliedBy";
 
 type TNumValue = number | string;
 export class Num {
-  static add(l: TNumValue, r: TNumValue) {
+  static plus(l: TNumValue, r: TNumValue) {
     return plus(l.toString(), r.toString());
   }
-  static subtract(l: TNumValue, r: TNumValue) {
+  static minus(l: TNumValue, r: TNumValue) {
     return plus(l.toString(), `-${r.toString()}`);
   }
   static multipliedBy(l: TNumValue, r: TNumValue) {
@@ -16,12 +16,12 @@ export class Num {
   constructor(val: TNumValue) {
     this.value = val.toString();
   }
-  add(val: TNumValue) {
-    this.value = Num.add(this.value, val);
+  plus(val: TNumValue) {
+    this.value = Num.plus(this.value, val);
     return this;
   }
-  subtract(val: TNumValue) {
-    this.value = Num.subtract(this.value, val);
+  minus(val: TNumValue) {
+    this.value = Num.minus(this.value, val);
     return this;
   }
   multipliedBy(val: TNumValue) {
