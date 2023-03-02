@@ -2,7 +2,7 @@ import { babel } from "@rollup/plugin-babel";
 import rollupNodeResolve from "@rollup/plugin-node-resolve";
 import rollupCommonjs from "@rollup/plugin-commonjs";
 import { terser as rollUpTerser } from "rollup-plugin-terser";
-import rollupReplace from "@rollup/plugin-replace";
+// import rollupReplace from "@rollup/plugin-replace";
 import ts from "rollup-plugin-typescript2";
 import path from "path";
 

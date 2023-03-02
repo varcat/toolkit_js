@@ -37,8 +37,10 @@ export function treeEach<T>(xs: T[], fn: Fn<T>, options?: IOptions): T[] {
       }
       if (typeof newItem === 'object' && isExist(newItem)) {
         if (notExist(children) && filterNull) {
+          // @ts-ignore
           Reflect.deleteProperty(newItem, childKey);
         } else if (isExist(children) && isEmpty(children) && filterEmpty) {
+          // @ts-ignore
           Reflect.deleteProperty(newItem, childKey);
         } else {
           // @ts-ignore
