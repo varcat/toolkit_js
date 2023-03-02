@@ -37,6 +37,7 @@ export { toArray } from "./toArray/toArray";
 export { toggle } from "./toggle/toggle";
 export { toNumber } from "./toNumber/toNumber";
 export { toNumberStr } from "./toNumberStr";
+export { treeEach } from "./treeEach";
 export { typeOf } from "./typeOf/typeOf";
 export { unique } from "./unique/unique";
 export { zip } from "./zip";

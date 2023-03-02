@@ -1,5 +1,5 @@
-import {movePrecision} from "../../internal/movePrecision";
-import {getDecimalsLength} from "../getDecimalsLength";
+import { movePrecision } from "../../internal/movePrecision";
+import { getDecimalsLength } from "../getDecimalsLength";
 
 export const plus = (a: string | number, b: string | number): string => {
   a = a.toString();
