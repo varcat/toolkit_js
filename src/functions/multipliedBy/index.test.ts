@@ -17,6 +17,7 @@ describe("multipliedBy", () => {
       "3299999999999999999999967"
     );
     expect(multipliedBy("3", "4")).toEqual("12");
+    expect(multipliedBy(3, 4)).toEqual("12");
     expect(multipliedBy(toNumberStr(".1"), toNumberStr("19,000.2"))).toEqual(
       "1900.02"
     );

@@ -1,14 +1,11 @@
 import {movePrecision} from "../../internal/movePrecision";
+import {getDecimalsLength} from "../getDecimalsLength";
 
-export const getPrecision = (x: string): number => {
-  const idx = x.indexOf(".");
-  if (idx === -1) return 0;
-  return x.length - idx - 1;
-};
-
-export const plus = (a: string, b: string): string => {
-  const ap = getPrecision(a);
-  const bp = getPrecision(b);
+export const plus = (a: string | number, b: string | number): string => {
+  a = a.toString();
+  b = b.toString();
+  const ap = getDecimalsLength(a);
+  const bp = getDecimalsLength(b);
   const precision = Math.max(ap, bp);
   const aVal = a.replace(".", "") + "0".repeat(precision - ap);
   const bVal = b.replace(".", "") + "0".repeat(precision - bp);

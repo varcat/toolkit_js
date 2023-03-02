@@ -77,6 +77,14 @@ get(obj, ["dept", "members", 0, "name"]); // 'n1';
 get(obj, `aa.bb.cc.dd`); // undefined
 ```
 
+## getDecimalsLength
+获取小数部分长度
+```typescript
+getDecimalsLength(1.123) // 3
+getDecimalsLength('.001') // 3
+getDecimalsLength('1.0') // 1
+```
+
 ## identity
 
 返回入参
@@ -173,6 +181,14 @@ type TTransformInfo = {
 };
 ```
 
+## multipliedBy
+
+确保精确的乘法，内部使用[Bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)实现，需自行评估兼容性
+```typescript
+multipliedBy('1', '2') // 2
+multipliedBy('0.1', '0.2') // 0.02
+```
+
 ## notExist
 ```javascript
 notExist(null) // true
@@ -252,6 +268,13 @@ reduce(arr, addFn, 0); // 10
 ```
 
 ## safeLast
+安全获取数组最后一个元素
+```typescript
+const arr = [1, 2]
+safeLast(arr) // 2
+safeLast(1) // null
+safeLast(null) // null
+```
 
 ## sleep
 ```javascript
