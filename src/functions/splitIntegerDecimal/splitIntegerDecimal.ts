@@ -1,4 +1,5 @@
 import { isSafeNumber } from "../isSafeNumber/isSafeNumber";
+import { isExist } from "../isExist/isExist";
 
 export function splitIntegerDecimal(amount: number | string): [string, string] {
   if (isSafeNumber(amount)) {
@@ -9,9 +10,14 @@ export function splitIntegerDecimal(amount: number | string): [string, string] {
     return res;
   }
   const match = amount.match(/\.(\d+)$/);
-  const pointIndex = match?.index ?? -1;
+  const pointIndex = match && isExist(match.index) ? match.index : -1;
   const hasOnlyPoint = amount.indexOf(".") === pointIndex;
-  if (!hasOnlyPoint || typeof match?.[1] !== "string") return res;
+  if (!match) {
+    return res;
+  }
+  if (!hasOnlyPoint || typeof match[1] !== "string") {
+    return res;
+  }
   const isDecimal = isSafeNumber(parseInt(match[1]));
   if (!isDecimal) return res;
   res[0] = amount.substring(0, pointIndex);

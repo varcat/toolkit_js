@@ -14,7 +14,7 @@ export const reduce = <T, U>(
   if (notExist(array)) {
     return initialValue!;
   }
-  let result = (initialValue ?? array[0]) as U;
+  let result = (isExist(initialValue) ? initialValue : array[0]) as U;
   for (let i = isExist(initialValue) ? 0 : 1; i < array.length; i += 1) {
     result = callback(result, array[i], i, array);
   }

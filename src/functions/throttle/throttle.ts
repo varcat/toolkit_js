@@ -11,9 +11,7 @@ export function throttle<T extends Function>(
   wait: number,
   opts: IThrottleOpts = {}
 ): T {
-  const maxWait = opts.maxWait ?? wait;
-  const leading = opts.leading ?? false;
-  const trailing = opts.trailing ?? true;
+  const {maxWait = wait, leading = false, trailing = true} = opts;
 
   let timerId: any;
   let lastInvokeTime: number | null = null;

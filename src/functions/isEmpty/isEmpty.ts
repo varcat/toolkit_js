@@ -28,7 +28,8 @@ export function isEmpty(
     return (x as Map<any, any>).size === 0;
   }
   if (typeOf(x) === "FormData") {
-    return (x as FormData).keys().next().done ?? true;
+    const isDone = (x as FormData).keys().next().done;
+    return  isExist(isDone) ? isDone! : true;
   }
   if (typeOf(x) === "Object") {
     return Object.keys(x as object).length === 0;
