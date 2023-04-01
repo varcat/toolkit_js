@@ -1,4 +1,4 @@
-import { movePrecision } from "../../internal/movePrecision";
+import { moveDecimalPoint } from "../../internal/moveDecimalPoint";
 import { getDecimalsLength } from "../getDecimalsLength";
 
 export const plus = (a: string | number, b: string | number): string => {
@@ -9,5 +9,6 @@ export const plus = (a: string | number, b: string | number): string => {
   const precision = Math.max(ap, bp);
   const aVal = a.replace(".", "") + "0".repeat(precision - ap);
   const bVal = b.replace(".", "") + "0".repeat(precision - bp);
-  return movePrecision((BigInt(aVal) + BigInt(bVal)).toString(), precision);
+  console.log('aVal', aVal, bVal, precision, (BigInt(aVal) + BigInt(bVal)).toString());
+  return moveDecimalPoint((BigInt(aVal) + BigInt(bVal)).toString(), -precision);
 };

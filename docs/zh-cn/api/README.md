@@ -1,6 +1,7 @@
 # API <!-- {docsify-ignore} -->
 
-## addition
+## <a id="addition">addition</a>
+
 将给定多维数字数组进行合计，非数字会调用[toNumber](#toNumber)尝试转换
 ```javascript
 addition(1, 2, 3) // 6
@@ -9,18 +10,14 @@ addition(1, 2, [7, 10]) // 20
 addition([1, 2], [[7, 10]]) // 20
 ```
 
-## and
+## <a id="and">and</a>
 
 ```javascript
 and(1, 0) // false
 and(1, 0 !== null) // true
 ```
 
-## ~~awaitToJs~~
-
-功能与[to](#to)一样，请使用[to](#to)，该函数`version >= 0.6`后将移除，
-
-## concatMap
+## <a id="concatMap">concatMap</a>
 
 Array.concat与Array.map的合并操作
 
@@ -31,7 +28,8 @@ const arr2 = [10, 20, 30];
 concatMap((x) => x * 10, arr1, arr2); // [10, 20, 30, 100, 200, 300]
 ```
 
-## currying
+## <a id="currying">currying</a>
+
 柯里化：把接受多个参数的函数变换成接受一个单一参数的函数，并且返回接受余下的参数且返回结果的新函数
 ```typescript
 function add(l: number, r: number): number {
@@ -44,8 +42,9 @@ curryAdd(1)(2) // 3
 curryAdd()(1)(2) // 3
 ```
 
-## debounce
-防抖：
+## <a id="debounce">debounce</a>
+
+防抖
 ```typescript
 interface IOpts {
   leading?: boolean; // default: false 开始时是否调用函数
@@ -63,7 +62,7 @@ type debounce<T extends Function> = (
 ) => T;
 ```
 
-## get
+## <a id="get">get</a>
 
 ```typescript
 const obj = { name: 'wsp', dept: { id: 1, name: 'dept', members: [ { name: 'n1' }, { name: 'n2' } ] } };
@@ -77,15 +76,17 @@ get(obj, ["dept", "members", 0, "name"]); // 'n1';
 get(obj, `aa.bb.cc.dd`); // undefined
 ```
 
-## getDecimalsLength
+## <a id="getDecimalsLength">getDecimalsLength</a>
+
 获取小数部分长度
+
 ```typescript
 getDecimalsLength(1.123) // 3
 getDecimalsLength('.001') // 3
 getDecimalsLength('1.0') // 1
 ```
 
-## identity
+## <a id="identity">identity</a>
 
 返回入参
 
@@ -95,7 +96,7 @@ identity(1) // 1
 identity({a: 1}) // {a: 1}
 ```
 
-## isEmpty
+## <a id="isEmpty">isEmpty</a>
 
 判断入参是否为空
 - `string`：`trim`后判断`length`是否为0
@@ -114,7 +115,7 @@ isEmpty(() => {}) // false
 isEmpty(0) // false
 ```
 
-## isExist
+## <a id="isExist">isExist</a>
 
 判断入参是否存在，仅`null || undefined`为`false`(不存在)
 
@@ -127,7 +128,7 @@ isExist([]) // true
 isExist([1,2,3]) // true
 ```
 
-## isIterable
+## <a id="isIterable">isIterable</a>
 
 判断是否可迭代，实现了`Symbol.iterator`接口
 
@@ -135,7 +136,8 @@ isExist([1,2,3]) // true
 isIterable([]); // true
 ```
 
-## isNumber
+## <a id="isNumber">isNumber</a>
+
 ```javascript
 isNumber(0) // true
 isNumber(NaN) // true
@@ -144,7 +146,8 @@ isNumber('0') // false
 isNumber([]) // false
 ```
 
-## isSafeNumber
+## <a id="isSafeNumber">isSafeNumber</a>
+
 ```javascript
 isSafeNumber(NaN) // false
 isSafeNumber(Infinity) // false
@@ -153,8 +156,10 @@ isSafeNumber(Number.MIN_SAFE_INTEGER) // true
 isSafeNumber(Number.MAX_SAFE_INTEGER) // true
 ```
 
-## iterative
+## <a id="iterative">iterative</a>
+
 将只支持单个参数的函数转变为可支持多个入参的函数
+
 ```typescript
 // isExist 只能判断一个入参
 isExist(null); // false
@@ -162,16 +167,17 @@ const isExists = iterative(isExist);
 isExists([ null, 1, {} ]); // [ false, true, true ]
 ```
 
-## last
+## <a id="last">last</a>
 
 ```typescript
 const arr = [1, 2];
 last(arr); // 2;
 ```
 
-## matrixTo
+## <a id="matrixTo">matrixTo</a>
 
 将获取到Dom元素的transform字符串转换为
+
 ```typescript
 type TTransformInfo = {
   x: number;
@@ -181,15 +187,20 @@ type TTransformInfo = {
 };
 ```
 
-## multipliedBy
+## <a id="multipliedBy">multipliedBy</a>
+
 
 确保精确的乘法，内部使用[Bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)实现，需自行评估兼容性
+
+v0.6后将移除，请使用[bignumber.js](https://www.npmjs.com/package/bignumber.js)
+
 ```typescript
 multipliedBy('1', '2') // 2
 multipliedBy('0.1', '0.2') // 0.02
 ```
 
-## notExist
+## <a id="notExist">notExist</a>
+
 ```javascript
 notExist(null) // true
 notExist(undefined) // true
@@ -198,7 +209,7 @@ notExist('') // false
 notExist({}) // false
 ```
 
-## once
+## <a id="once">once</a>
 
 包装给定的入参函数，返回仅执行一次的函数
 
@@ -215,7 +226,7 @@ oncePush(3);
 arr; // [1]
 ```
 
-## or
+## <a id="or">or</a>
 
 入参表达式或函数返回true，则or函数返回true，否则返回false
 
@@ -225,7 +236,7 @@ or(null, undefined, 0, "") // false
 or(() => false, undefined, 0, "") // false
 ```
 
-## pipe
+## <a id="pipe">pipe</a>
 
 管道函数，js[管道运算符](https://es6.ruanyifeng.com/#docs/proposals#%E7%AE%A1%E9%81%93%E8%BF%90%E7%AE%97%E7%AC%A6)
 
@@ -240,9 +251,11 @@ const repeatAndUpperCase = pipe(
 repeatAndUpperCase("a", 2); // "AA"
 ```
 
-## plus
+## <a id="plus">plus</a>
 
 任意大数,保证精确的加法，内部使用[Bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)实现，需自行评估兼容性
+
+v0.6后将移除，请使用[bignumber.js](https://www.npmjs.com/package/bignumber.js)
 
 ```typescript
 type plus = (a: string, b: string) => string;
@@ -253,22 +266,27 @@ plus('0.1', '0.2'); // '0.3'
 plus(toNumberStr('.1'), toNumberStr('19,000.2')); // '19000.3'
 ```
 
-## prop
+## <a id="prop">prop</a>
+
 prop是currying化的[get](#get)
+
 ```typescript
 const obj = { user: {name: 'n'} };
 prop(`name.name`)(obj); // 'n'
 ```
 
-## reduce
+## <a id="reduce">reduce</a>
+
 ```typescript
 const arr = [1, 2, 3, 4];
 const addFn = (sum, n) => sum + n;
 reduce(arr, addFn, 0); // 10
 ```
 
-## safeLast
+## <a id="safeLast">safeLast</a>
+
 安全获取数组最后一个元素
+
 ```typescript
 const arr = [1, 2]
 safeLast(arr) // 2
@@ -276,7 +294,8 @@ safeLast(1) // null
 safeLast(null) // null
 ```
 
-## sleep
+## <a id="sleep">sleep</a>
+
 ```javascript
 ( async () => {
   // 其他代码
@@ -285,7 +304,7 @@ safeLast(null) // null
 })()
 ```
 
-## splitIntegerDecimal
+## <a id="splitIntegerDecimal">splitIntegerDecimal</a>
 
 拆分整数与小数部分, 还可以配合[toNumberStr](#toNumberStr)使用
 
@@ -294,7 +313,7 @@ splitIntegerDecimal("1"); // ["1", ""]
 splitIntegerDecimal("100.00"); // ["100", "00"]
 ```
 
-## throttle
+## <a id="throttle">throttle</a>
 
 节流函数
 
@@ -316,7 +335,7 @@ type debounce<T extends Function> = (
 ) => T;
 ```
 
-## to
+## <a id="to">to</a>
 
 不使用try...catch... 优雅捕获Promise错误
 
@@ -344,7 +363,10 @@ const queryFn = (id) => service.findUserById(id);
 })();
 ```
 
-## toArray
+## <a id="toArray">toArray</a>
+
+将类数组或基础数据类型转为数组
+
 ```javascript
 toArray('abc') // ['a', 'b', 'c']
 toArray([]) // []
@@ -357,7 +379,7 @@ toArray(false) // [false]
 toArray(new Set([1, 2])) // [1, 2]
 ```
 
-## toggle
+## <a id="toggle">toggle</a>
 
 在给定状态或函数中切换
 
@@ -369,7 +391,8 @@ toggleStatus(); // "three"
 toggleStatus(); // "one"
 ```
 
-## toNumber
+## <a id="toNumber">toNumber</a>
+
 ```javascript
 toNumber(100) // 100
 toNumber('10,000') // 10000
@@ -380,7 +403,8 @@ toNumber(NaN, {defaultValue: 100}) // 100
 toNumber(0, {defaultValue: 100}) // 0
 ```
 
-## toNumberStr
+## <a id="toNumberStr">toNumberStr</a>
+
 ```typescript
 toNumberStr(12); // "12"
 toNumberStr("011"); // "11"
@@ -389,7 +413,7 @@ toNumberStr("0000"); // "0"
 toNumberStr("1,999,120.001000"); // "1999120.001"
 ```
 
-## treeEach
+## <a id="treeEach">treeEach</a>
 
 树遍历
 ```typescript
@@ -414,7 +438,7 @@ interface IOptions {
   startLeaf?: boolean;
 }
 
-type treeEach<T>(xs: T[], fn: Fn<T>, options?: IOptions) => T[];
+type treeEach = <T>(xs: T[], fn: Fn<T>, options?: IOptions) => T[];
 
 const tree1 = [
   null,
@@ -463,7 +487,7 @@ treeEach(tree1, (x) => {
 strArr2.join('/') // 1.1/1.2.1/1.2/1.3.1/1.3.2/1.3/1/2.1/2
 ```
 
-## typeOf
+## <a id="typeOf">typeOf</a>
 
 内部使用`Object.prototype.toString.call`获取类型
 
@@ -480,7 +504,7 @@ typeOf(new Map()) // Map
 typeOf(new FormData()) // FormData
 ```
 
-## unique
+## <a id="unique">unique</a>
 
 去重
 
@@ -502,7 +526,7 @@ unique(arr, x => x.info.id);
 // ]
 ```
 
-## zip
+## <a id="zip">zip</a>
 
 配对操作
 
@@ -518,7 +542,7 @@ zip(a1, a2, a3);
 // ]
 ```
 
-## zipWith
+## <a id="zipWith">zipWith</a>
 
 配对操作
 
@@ -529,7 +553,11 @@ const arr3 = [5, 5];
 zipWidth((a, b) => a + b, arr1, arr2, arr3); // [ 7, 9 ]
 ```
 
-## Vector
+----
+
+## <a id="Vector">Vector</a>
+
+可用于判断手势动作
 
 **ICoord**
 ```typescript
@@ -583,3 +611,13 @@ const v2 = Vector.of({x: 10, y: 0});
 v1.getScale(v2); // 0.5
 v2.getScale(v1); // 2
 ```
+
+----
+
+----
+
+## 废弃API
+
+## ~~awaitToJs~~
+
+功能与[to](#to)一样，请使用[to](#to)，该函数`version >= 0.6`后将移除。

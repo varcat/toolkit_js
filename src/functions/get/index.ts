@@ -1,6 +1,6 @@
 import { isEmpty } from "../isEmpty/isEmpty";
 import { notExist } from "../notExist/notExist";
-import { propStrToList } from "./propStrToList";
+import { propStrToList } from "../../internal/propStrToList/propStrToList";
 import { reduce } from "../reduce";
 import { isExist } from "../isExist/isExist";
 

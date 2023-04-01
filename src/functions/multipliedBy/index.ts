@@ -1,4 +1,4 @@
-import {movePrecision} from "../../internal/movePrecision";
+import {moveDecimalPoint} from "../../internal/moveDecimalPoint";
 import {getDecimalsLength} from "../getDecimalsLength";
 
 export function multipliedBy(a: string | number, b: string | number): string {
@@ -9,5 +9,5 @@ export function multipliedBy(a: string | number, b: string | number): string {
   const precision = ap + bp;
   const aVal = a.replace(".", "");
   const bVal = b.replace(".", "");
-  return movePrecision((BigInt(aVal) * BigInt(bVal)).toString(), precision);
+  return moveDecimalPoint((BigInt(aVal) * BigInt(bVal)).toString(), -precision);
 }

@@ -1,5 +1,5 @@
-import { isEmpty } from "../isEmpty/isEmpty";
-import { notExist } from "../notExist/notExist";
+import { isEmpty } from "../../functions/isEmpty/isEmpty";
+import { notExist } from "../../functions/notExist/notExist";
 
 export function propStrToList(props: string): Array<string | number> {
   const res: Array<string | number> = [];
