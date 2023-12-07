@@ -614,8 +614,6 @@ v2.getScale(v1); // 2
 
 ----
 
-----
-
 ## 废弃API
 
 ## ~~awaitToJs~~

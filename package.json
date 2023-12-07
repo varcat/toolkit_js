@@ -16,7 +16,8 @@
     "r": "rollup -c",
     "test": "jest",
     "pub": "npm publish --access public",
-    "doc-server": "docsify serve docs"
+    "doc-server": "docsify serve docs",
+    "build-doc": "node scripts/copyMd.js"
   },
   "repository": {
     "type": "git",
