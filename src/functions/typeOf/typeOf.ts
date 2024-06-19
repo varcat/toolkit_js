@@ -11,6 +11,8 @@ type Result =
   | "FormData"
   | "URLSearchParams"
   | "Boolean"
+  | "AsyncFunction"
+  | "String"
   | string;
 
 export function typeOf(x: any): Result {

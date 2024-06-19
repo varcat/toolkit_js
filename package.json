@@ -12,12 +12,12 @@
   ],
   "scripts": {
     "rm": "node scripts/rm",
-    "build": "npm run r",
-    "r": "rollup -c",
+    "build": "rollup -c",
     "test": "jest",
     "pub": "npm publish --access public",
-    "doc-server": "docsify serve docs",
-    "build-doc": "node scripts/copyMd.js"
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "repository": {
     "type": "git",
@@ -37,25 +37,24 @@
   },
   "homepage": "https://github.com/varcat/toolkit_js#readme",
   "devDependencies": {
-    "@babel/cli": "^7.23.4",
-    "@babel/core": "^7.23.5",
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.4",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/plugin-transform-runtime": "^7.23.4",
-    "@babel/preset-env": "^7.23.5",
-    "@babel/preset-typescript": "^7.23.3",
+    "@babel/plugin-transform-runtime": "^7.24.3",
+    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-typescript": "^7.24.1",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^19.0.2",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-replace": "^4.0.0",
     "@types/jest": "^26.0.24",
     "babel-jest": "^26.6.3",
-    "docsify-cli": "^4.4.4",
     "jest": "^26.6.3",
     "prettier": "^2.8.8",
     "rollup": "^2.79.1",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.31.2",
-    "typescript": "^4.9.5"
-  },
-  "dependencies": {}
+    "typescript": "^4.9.5",
+    "vitepress": "^1.1.3"
+  }
 }
