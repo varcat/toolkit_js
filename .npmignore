@@ -115,3 +115,5 @@ tsconfig.json
 .editorconfig
 docs
 rollup.config.js
+index.md
+.vitepress

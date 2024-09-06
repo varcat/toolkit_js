@@ -25,6 +25,7 @@ export class Vector {
     v.y = vector.y;
     return v;
   }
+  static getLength() {}
 
   getLength() {
     return getVectorLength(this);

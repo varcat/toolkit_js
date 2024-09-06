@@ -6,3 +6,4 @@ describe("Num", () => {
     expect(Num.minus("0.1", 0.2)).toBe("-0.1");
   });
 });
+

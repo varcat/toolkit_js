@@ -36,7 +36,7 @@ type CurriedFunction<
   ...args: NEW_ARGS
 ) => CurriedFunctionOrReturnValue<[...PROVIDED, ...NEW_ARGS], FN>;
 
-export function currying<
+export function curry<
   FN extends (...args: any[]) => any,
   STARTING_ARGS extends PartialParameters<FN>
 >(
@@ -48,6 +48,6 @@ export function currying<
     if (totalArgs.length >= targetFn.length) {
       return targetFn(...totalArgs);
     }
-    return currying(targetFn, ...(totalArgs as PartialParameters<FN>));
+    return curry(targetFn, ...(totalArgs as PartialParameters<FN>));
   };
 }

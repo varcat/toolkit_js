@@ -1,6 +1,6 @@
 {
   "name": "wsp-toolkit",
-  "version": "0.5.19",
+  "version": "0.6.0",
   "description": "Personal toolbox",
   "main": "dist/wsp-toolkit.cjs.js",
   "unpkg": "dist/wsp-toolkit.global.js",
@@ -15,9 +15,9 @@
     "build": "rollup -c",
     "test": "jest",
     "pub": "npm publish --access public",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
   },
   "repository": {
     "type": "git",
