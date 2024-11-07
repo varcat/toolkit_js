@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /docs/quick-start
+      link: /md/quick-start
     - theme: alt
       text: API 参考
       link: /fn/curry/
