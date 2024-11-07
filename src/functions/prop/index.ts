@@ -1,7 +1,6 @@
-import { notExist } from "../notExist/notExist";
 import { propStrToList } from "../../internal/propStrToList/propStrToList";
-import { reduce } from "../reduce";
 import { curry } from "../curry/curry";
+import { isNil } from "../isNil";
 
 export const prop = curry(
   (
@@ -14,13 +13,10 @@ export const prop = curry(
     if (!Array.isArray(props)) {
       props = [props];
     }
-    return reduce(
-      (res: any, key: string | number | symbol) => {
-        if (notExist(res)) return;
-        return res[key];
-      },
-      subject,
-      props
-    );
+
+    return props.reduce((res: any, key: string | number | symbol) => {
+      if (isNil(res)) return;
+      return res[key];
+    }, subject);
   }
 );

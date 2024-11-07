@@ -1,5 +1,5 @@
 import {
-  getDecimalsLength,
+  decimalLength,
   splitIntegerDecimal,
   toNumberStr,
 } from "../../functions";
@@ -17,7 +17,7 @@ export const moveDecimalPoint = (x: string | number, p: number): string => {
   // 截取无符号的数字部分
   const val = hasSymbol ? x.slice(1) : x;
   // 已有小数长度 加上 移动的小数位数
-  const flotLength = -getDecimalsLength(val) + p;
+  const flotLength = -decimalLength(val) + p;
   const [int, flot] = splitIntegerDecimal(val);
   let num: string = `${int}${flot}`.replace(/^0*/, "");
   if (flotLength === 0) {

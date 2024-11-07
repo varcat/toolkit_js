@@ -1,3 +1,3 @@
-export function isExist<T>(x: T): x is T {
+export function isExist<T>(x: T): boolean {
   return x != null;
 }

@@ -12,7 +12,11 @@ export default defineConfig({
       provider: "local",
     },
     // https://vitepress.dev/reference/default-theme-config
-    nav: [{ text: "首页", link: "/" }],
+    nav: [
+      { text: "快速开始", link: "/docs/quick-start" },
+      { text: "Function", link: "/fn/curry" },
+      { text: "Class", link: "/class/Vector" },
+    ],
 
     sidebar,
 
@@ -22,5 +26,6 @@ export default defineConfig({
   },
   rewrites: {
     "src/functions/:fn/(.*)": "fn/:fn/index.md",
+    "src/struct/:class/(.*)": "class/:class/index.md",
   },
 });

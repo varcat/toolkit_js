@@ -1,4 +1,8 @@
+# zip
+
 配对操作
+
+## 示例
 
 ```typescript
 const a1 = [1, 3, 5];

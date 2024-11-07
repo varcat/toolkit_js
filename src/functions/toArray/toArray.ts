@@ -1,14 +1,14 @@
-import { isExist } from "../isExist/isExist";
-import { isNumber } from "../isNumber/isNumber";
+import { isNumber } from "../../internal/isNumber/isNumber";
 import { typeOf } from "../typeOf/typeOf";
+import { isIterable } from "../isIterable";
+import { isNil } from "../isNil";
 
 export function toArray<T>(x: any): Array<T> {
   if (Array.isArray(x)) return x;
-  if (!isExist(x)) return [];
+  if (isNil(x)) return [];
   if (isNumber(x) || typeOf(x) === "Boolean") return [x];
-  try {
+  if (isIterable(x)) {
     return Array.from(x);
-  } catch (e) {
-    return [];
   }
+  return [];
 }

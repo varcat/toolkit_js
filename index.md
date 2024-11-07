@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "JS工具包"
   text: ""
-  tagline: 简单、轻便、快捷
+  tagline: simple, small, fast
   actions:
     - theme: brand
       text: 快速开始
@@ -15,6 +15,6 @@ hero:
       link: /fn/curry/
 
 features:
-  - title: 😄
+  - title: 0依赖的JS函数库
     details:
 ---

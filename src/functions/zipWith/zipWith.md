@@ -1,4 +1,8 @@
-配对操作
+# zipWith
+
+配对操作(参考[zip](/fn/zip/))，并对每一对进行 reduce 操作
+
+## 示例
 
 ```typescript
 const arr1 = [1, 2, 3];

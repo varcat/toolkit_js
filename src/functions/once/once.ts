@@ -1,8 +1,10 @@
-export function once<T extends Function>(fn: T): T {
+export function once<T, R>(fn: (a: T) => R) {
   let done = false;
-  return ((...args: any[]) => {
-    if (done) return;
+  let result: R;
+  return (a: T) => {
+    if (done) return result;
     done = true;
-    fn(...args);
-  }) as unknown as T;
+    result = fn(a);
+    return result;
+  };
 }

@@ -18,6 +18,7 @@
 function add(l: number, r: number): number {
   return l + r;
 }
+
 // add 函数有两个形参，满足两个参数后才会调用
 const curryAdd = curry(add);
 curryAdd(1, 2); // 3

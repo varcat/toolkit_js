@@ -1,21 +1,32 @@
 import { isEmpty } from "../isEmpty/isEmpty";
 import { isExist } from "../isExist/isExist";
-import { notExist } from "../notExist/notExist";
+import { isNil } from "../isNil";
 
+// #region Fn
 type Fn<T> = (
+  // 当前元素
   item: T,
   index?: number,
   list?: T[],
+  // 树层级，top从0开始
   level?: number,
+  // 父节点，level 0 时为null
   parent?: T | null
 ) => T;
+// #endregion Fn
 
+// #region IOptions
 interface IOptions {
+  // 后代节点key，默认为 "children"
   childKey?: string;
+  // 是否过滤不存在的节点，过滤类型为 null | undefined
   filterNull?: boolean;
+  // 是否过滤为空的节点
   filterEmpty?: boolean;
+  // false表示从top开始遍历，true表示从叶节点遍历
   startLeaf?: boolean;
 }
+// #endregion IOptions
 
 export function treeEach<T>(xs: T[], fn: Fn<T>, options?: IOptions): T[] {
   const {
@@ -35,8 +46,8 @@ export function treeEach<T>(xs: T[], fn: Fn<T>, options?: IOptions): T[] {
       if (!startLeaf && Array.isArray(children)) {
         children = each(children, level + 1, value);
       }
-      if (typeof newItem === 'object' && isExist(newItem)) {
-        if (notExist(children) && filterNull) {
+      if (typeof newItem === "object" && isExist(newItem)) {
+        if (isNil(children) && filterNull) {
           // @ts-ignore
           Reflect.deleteProperty(newItem, childKey);
         } else if (isExist(children) && isEmpty(children) && filterEmpty) {
@@ -46,7 +57,7 @@ export function treeEach<T>(xs: T[], fn: Fn<T>, options?: IOptions): T[] {
           // @ts-ignore
           newItem[childKey] = children;
         }
-      } else if (filterNull && notExist(newItem)) {
+      } else if (filterNull && isNil(newItem)) {
         return result;
       }
       result.push(newItem);
