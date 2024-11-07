@@ -19,6 +19,6 @@ import { isExist } from "wsp-toolkit";
 const { typeOf } = require("wsp-toolkit");
 ```
 
-## [API文档](https://varcat.github.io/toolkit_js/#/zh-cn/api/)
+## [API 文档](https://varcat.github.io/toolkit_js/#/zh-cn/api/)
 
-[click here to API doc](https://varcat.github.io/toolkit_js/#/zh-cn/api/)
+[click here to API doc](https://varcat.github.io/toolkit_js/)
