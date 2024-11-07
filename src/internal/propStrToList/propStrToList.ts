@@ -1,4 +1,5 @@
-import { isNil, isEmpty } from "../../functions";
+import { isEmpty } from "../../functions/isEmpty/isEmpty";
+import { isNil } from "../../functions/isNil";
 
 export function propStrToList(props: string): Array<string | number> {
   const res: Array<string | number> = [];
