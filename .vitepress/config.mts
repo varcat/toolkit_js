@@ -13,7 +13,7 @@ export default defineConfig({
     },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: "快速开始", link: "/docs/quick-start" },
+      { text: "快速开始", link: "/md/quick-start" },
       { text: "Function", link: "/fn/curry" },
       { text: "Class", link: "/class/Vector" },
     ],

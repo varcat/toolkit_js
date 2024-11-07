@@ -1,4 +1,4 @@
-import { isEmpty } from "../index";
+import { isEmpty } from "../isEmpty/isEmpty";
 
 enum NumberType {
   unknown,
