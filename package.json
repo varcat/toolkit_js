@@ -16,7 +16,7 @@
     "test": "jest",
     "pub": "npm publish --access public",
     "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build --outDir docs",
+    "docs:build": "vitepress build --outDir docs --base /toolkit_js",
     "docs:preview": "vitepress preview"
   },
   "repository": {
