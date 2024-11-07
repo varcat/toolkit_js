@@ -108,3 +108,5 @@ typings/
 
 # 以下单独
 dist
+docs/.vitepress/cache
+.vitepress/cache

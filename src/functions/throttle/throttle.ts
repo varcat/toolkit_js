@@ -1,10 +1,15 @@
-import { notExist } from "../notExist/notExist";
+import { isNil } from "../isNil";
 
+// #region IThrottleOpts
 interface IThrottleOpts {
+  // default: false 开始时是否调用函数
   leading?: boolean;
+  // default: true 结束时是否调用函数
   trailing?: boolean;
+  // default: wait 为0则开始到结束之间的事件不调用函数
   maxWait?: number;
 }
+// #endregion IThrottleOpts
 
 export function throttle<T extends Function>(
   fn: T,
@@ -25,7 +30,7 @@ export function throttle<T extends Function>(
     clearTimeout(timerId);
     const now = Date.now();
 
-    if (notExist(lastInvokeTime)) {
+    if (isNil(lastInvokeTime)) {
       if (leading) {
         fn(...args);
       }

@@ -1,9 +1,8 @@
 import { zip } from "../zip";
-import { reduce } from "../reduce";
 
-interface Op<T, U> {
-  (result: U, x: T, index: number, xs: T[]): U;
+interface Op<T> {
+  (result: T, x: T, index: number, xs: T[]): T;
 }
 
-export const zipWidth = <T, U>(op: Op<T, U>, ...xs: T[][]): U[] =>
-  zip(...xs).map((x) => reduce(x, op));
+export const zipWidth = <T>(op: Op<T>, ...xs: T[][]): T[] =>
+  zip(...xs).map((x) => x.reduce(op));

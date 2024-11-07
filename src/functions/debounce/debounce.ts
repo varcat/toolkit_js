@@ -1,9 +1,13 @@
 import { throttle } from "../throttle/throttle";
 
+// #region IDebounceOpts
 interface IDebounceOpts {
+  // default: false 开始时是否调用函数
   leading?: boolean;
+  // default: true 结束时是否调用函数
   trailing?: boolean;
 }
+// #endregion IDebounceOpts
 
 export function debounce<T extends Function>(
   func: T,

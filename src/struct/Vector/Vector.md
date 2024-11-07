@@ -1,54 +1,82 @@
-可用于判断手势动作
+# Vector(a, b)
 
-**ICoord**
+可用于判断手势动作等
+
+另参考 [getPoint](/fn/getPoint/)
+
+## 入参
+
+| 参数 | 类型   | 必填 | 说明                  |
+| :--- | :----- | :--- | :-------------------- |
+| a    | ICoord | 是   | -                     |
+| b    | ICoord | 否   | 默认为 `{x: 0, y: 0}` |
+
+<<< @/src/interface/Point.ts#Point
+
+## 示例
+
+### 构造方式
+
 ```typescript
-interface ICoord {
-  x: number;
-  y: number;
-}
+import { Vector } from "wsp-toolkit";
+// 两种构造 Vector 的方式
+const v1 = new Vector({ x: 10, y: 0 });
+const v2 = Vector.of({ x: 0, y: 10 });
 ```
 
-两种构造Vector的方式
+### Pinch(双指缩放)
 
-**new Vector(p1: ICoord, p2: ICoord)**
+![img_1.png](img_1.png)
 
-**Vector.of(p: ICoord)**
+```ts
+// 省略获取Point的代码
+const a = new Vector(aPoint1, aPoint2);
+const b = Vector.of(bPoint1, bPoint2);
 
-```typescript
-import {Vector} from "wsp-toolkit";
-
-const v = Vector.of({x: 10, y: 0});
-const v1 = Vector.of({x: 0, y: 10});
-const v2 = new Vector({x: 0, y: 3}, {x: 4, y: 0});
+a.getScale(b); // a 放大到 b 的倍率
+b.getScale(a); // b 缩小到 a 的倍率
 ```
 
-**instance.getLength()**
+### Rotate(双指旋转)
 
-获取向量长度
+![img_2.png](img_2.png)
 
 ```typescript
-v1.getLength() // 10
-v2.getLength() // 5
+// 省略获取Point的代码
+const a = new Vector(aPoint1, aPoint2);
+const b = Vector.of(bPoint1, bPoint2);
+
+a.getAngle(b); // a 顺时针旋转到 b
+b.getAngle(a); // b 逆时针旋转到 a
 ```
 
-**instance.getAngle(v: Vector)**
+### singlePinch(单指缩放)
 
-获取旋转角度
+![img.png](img.png)
 
-```typescript
-v.getAngle(v1) // 90
-v1.getAngle(v) // -90
+```ts
+// 依赖基准点(正方形中间的点)进行计算, 假定值为
+import { Vector } from "./Vector";
+
+const basePoint = { x: 10, y: 10 };
+// 计算 touchstart 向量模
+const a = new Vector(startPoint, basePoint);
+
+// 计算 touchend（touchmove相同操作） 向量模
+const b = new Vector(currentPoint, basePoint);
+
+a.getScale(b); // a 放大到 b 的倍率
 ```
 
-**instance.getScale(v: Vector)**
+### singleRotate(单指旋转)
 
-获取缩放比例
+![img_3.png](img_3.png)
 
-```typescript
-import {Vector} from "./Vector";
+```ts
+// 依然需要依赖基准点进行计算
 
-const v1 = Vector.of({x: 5, y: 0});
-const v2 = Vector.of({x: 10, y: 0});
-v1.getScale(v2); // 0.5
-v2.getScale(v1); // 2
+const a = new Vector(startPoint, basePoint);
+const b = Vector(currentPoint, basePoint);
+
+a.getAngle(b); // 计算a旋转到b的角度
 ```

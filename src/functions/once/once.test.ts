@@ -12,3 +12,4 @@ test("once", () => {
   oncePush(3);
   expect(arr).toEqual([1]);
 });
+

@@ -1,5 +1,4 @@
-import { isEmpty } from "../../functions/isEmpty/isEmpty";
-import { notExist } from "../../functions/notExist/notExist";
+import { isNil, isEmpty } from "../../functions";
 
 export function propStrToList(props: string): Array<string | number> {
   const res: Array<string | number> = [];
@@ -41,7 +40,7 @@ export function propStrToList(props: string): Array<string | number> {
     }
     if (alpha === "]" && isEmpty(quotations)) {
       const leftBracket = leftBrackets.pop();
-      if (notExist(leftBracket)) {
+      if (isNil(leftBracket)) {
         throw new SyntaxError("Unexpected token ']'");
       }
       initToken();

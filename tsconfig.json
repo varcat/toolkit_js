@@ -1,8 +1,6 @@
 /* Visit https://aka.ms/tsconfig.json to read more about this file */
 {
-  "exclude": [
-    "src/**/*.test.ts"
-  ],
+  "exclude": ["src/**/*.test.ts"],
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": "./src",
@@ -30,3 +28,4 @@
     "noEmitHelpers": true
   }
 }
+

@@ -1,9 +1,15 @@
+// #region TTransformInfo
 export type TTransformInfo = {
+  // translate X轴偏移量
   x: number;
+  // translate Y轴偏移量
   y: number;
+  // scale 大小
   scale: number;
+  // 旋转角度
   rotate: number;
 };
+// #endregion TTransformInfo
 
 export function matrixTo(matrixStr: string): TTransformInfo {
   const arr = matrixStr
