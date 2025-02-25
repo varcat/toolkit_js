@@ -1,4 +1,4 @@
-import type { Point } from "../../interface/Point";
+import type { Point } from "../../type/Point";
 
 function pointSub(a: Point, b: Point): Point {
   return {

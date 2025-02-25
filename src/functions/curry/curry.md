@@ -23,5 +23,4 @@ function add(l: number, r: number): number {
 const curryAdd = curry(add);
 curryAdd(1, 2); // 3
 curryAdd(1)(2); // 3
-curryAdd()(1)(2); // 3
 ```

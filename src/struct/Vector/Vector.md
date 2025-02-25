@@ -11,7 +11,7 @@
 | a    | Point | 是   | -                     |
 | b    | Point | 否   | 默认为 `{x: 0, y: 0}` |
 
-<<< @/src/interface/Point.ts#Point
+<<< @/src/type/Point.ts#Point
 
 ## 示例
 

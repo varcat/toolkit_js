@@ -11,7 +11,7 @@
 
 ## 返回
 
-<<< @/src/interface/Point.ts#Point
+<<< @/src/type/Point.ts#Point
 
 ## 示例
 

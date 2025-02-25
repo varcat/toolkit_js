@@ -31,3 +31,5 @@ const { typeOf } = require("wsp-toolkit");
 // unpkg
 window.toolkit.isExist("");
 ```
+
+[API Reference](/fn/curry/)

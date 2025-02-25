@@ -9,7 +9,7 @@ export default {
     {
       text: "Function",
       collapsed: false,
-      items: setLink(["curry", "identity", "once", "pipe"]),
+      items: setLink(["curry", "identity", "once", "pipe", "emptyFn"]),
     },
     {
       text: "Object",
@@ -46,7 +46,7 @@ export default {
     {
       text: "Logic",
       collapsed: false,
-      items: setLink(["ifElse", "and", "or", "isEmpty"]),
+      items: setLink(["ifElse", "and", "or", "isEmpty", "when"]),
     },
     {
       text: "Type",
