@@ -31,3 +31,6 @@ export { isNil } from "./isNil";
 export { ifElse } from "./ifElse";
 export { toPromiseTuple } from "./toPromiseTuple";
 export { promiseTry } from "./promiseTry";
+export { when } from './when';
+export { clamp } from './clamp/clamp';
+export { emptyFn } from './emptyFn';

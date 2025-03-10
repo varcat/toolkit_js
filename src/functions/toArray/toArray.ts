@@ -7,7 +7,8 @@ type ToArray<T> = [T] extends [any[]] ? T : T[];
 
 export function toArray<T>(x: T): ToArray<T> {
   if (Array.isArray(x)) return x;
-  if (isNil(x) || isNumber(x) || typeOf(x) === "Boolean") {
+  if (isNil(x)) return [] as ToArray<T>;
+  if (isNumber(x) || typeOf(x) === "Boolean") {
     return [x] as ToArray<T>;
   }
   if (isIterable(x)) {
