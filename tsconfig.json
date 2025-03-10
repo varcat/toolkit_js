@@ -23,7 +23,7 @@
     "noImplicitReturns": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "importsNotUsedAsValues": "error",
+    "verbatimModuleSyntax": true,
     "importHelpers": true,
     "noEmitHelpers": true
   }

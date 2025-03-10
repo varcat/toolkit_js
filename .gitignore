@@ -110,3 +110,4 @@ typings/
 dist
 docs/.vitepress/cache
 .vitepress/cache
+.DS_Store

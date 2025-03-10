@@ -1,4 +1,4 @@
-import type { Point } from "../../interface/Point";
+import type { Point } from "../../type/Point";
 
 export function getPoint(event: TouchEvent, index: number): Point {
   return {

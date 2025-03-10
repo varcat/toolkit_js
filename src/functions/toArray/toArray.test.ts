@@ -14,5 +14,6 @@ describe("toArray.ts", () => {
     expect(toArray(0)).toEqual([0]);
     expect(toArray(true)).toEqual([true]);
     expect(toArray(null)).toEqual([]);
+    expect(toArray(undefined)).toEqual([]);
   });
 });

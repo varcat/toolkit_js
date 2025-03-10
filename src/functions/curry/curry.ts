@@ -1,53 +1,20 @@
-type PartialTuple<
-  TUPLE extends any[],
-  EXTRACTED extends any[] = []
-> = TUPLE extends [infer NEXT_PARAM, ...infer REMAINING]
-  ? PartialTuple<REMAINING, [...EXTRACTED, NEXT_PARAM?]>
-  : [...EXTRACTED, ...TUPLE];
+import type { Cast, Drop, Length } from "../../type/types";
 
-type PartialParameters<FN extends (...args: any[]) => any> = PartialTuple<
-  Parameters<FN>
->;
+type Curry<P extends any[], R> = <T extends any[]>(
+  ...args: Cast<T, Partial<P>>
+) => {
+  0: Curry<Cast<Drop<Length<T>, P>, any[]>, R>;
+  1: R;
+}[Drop<Length<T>, P> extends [any, ...any] ? 0 : 1];
 
-type RemainingParameters<
-  PROVIDED extends any[],
-  EXPECTED extends any[]
-> = EXPECTED extends [infer E1, ...infer EX]
-  ? PROVIDED extends [infer P1, ...infer PX]
-    ? P1 extends E1
-      ? RemainingParameters<PX, EX>
-      : never
-    : EXPECTED
-  : [];
-
-type CurriedFunctionOrReturnValue<
-  PROVIDED extends any[],
-  FN extends (...args: any[]) => any
-> = RemainingParameters<PROVIDED, Parameters<FN>> extends [any, ...any[]]
-  ? CurriedFunction<PROVIDED, FN>
-  : ReturnType<FN>;
-
-type CurriedFunction<
-  PROVIDED extends any[],
-  FN extends (...args: any[]) => any
-> = <
-  NEW_ARGS extends PartialTuple<RemainingParameters<PROVIDED, Parameters<FN>>>
->(
-  ...args: NEW_ARGS
-) => CurriedFunctionOrReturnValue<[...PROVIDED, ...NEW_ARGS], FN>;
-
-export function curry<
-  FN extends (...args: any[]) => any,
-  STARTING_ARGS extends PartialParameters<FN>
->(
-  targetFn: FN,
-  ...existingArgs: STARTING_ARGS
-): CurriedFunction<STARTING_ARGS, FN> {
-  return function (...args) {
-    const totalArgs = [...existingArgs, ...args];
-    if (totalArgs.length >= targetFn.length) {
-      return targetFn(...totalArgs);
+export const curry = <P extends any[], R>(
+  fn: (...args: P) => R
+): Curry<P, R> => {
+  const curry = (...args: any[]): any => {
+    if (args.length >= fn.length) {
+      return fn(...(args as unknown as P));
     }
-    return curry(targetFn, ...(totalArgs as PartialParameters<FN>));
+    return curry.bind(null, ...args);
   };
-}
+  return curry;
+};

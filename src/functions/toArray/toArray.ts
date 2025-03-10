@@ -3,12 +3,16 @@ import { typeOf } from "../typeOf/typeOf";
 import { isIterable } from "../isIterable";
 import { isNil } from "../isNil";
 
-export function toArray<T>(x: any): Array<T> {
+type ToArray<T> = [T] extends [any[]] ? T : T[];
+
+export function toArray<T>(x: T): ToArray<T> {
   if (Array.isArray(x)) return x;
-  if (isNil(x)) return [];
-  if (isNumber(x) || typeOf(x) === "Boolean") return [x];
-  if (isIterable(x)) {
-    return Array.from(x);
+  if (isNil(x)) return [] as ToArray<T>;
+  if (isNumber(x) || typeOf(x) === "Boolean") {
+    return [x] as ToArray<T>;
   }
-  return [];
+  if (isIterable(x)) {
+    return Array.from(x) as ToArray<T>;
+  }
+  return [] as ToArray<T>;
 }

@@ -2,23 +2,27 @@ import { isEmpty } from "../isEmpty/isEmpty";
 import { isExist } from "../isExist/isExist";
 import { isNil } from "../isNil";
 
+interface ITree {
+  [key: PropertyKey]: unknown;
+}
+
 // #region Fn
 type Fn<T> = (
   // 当前元素
   item: T,
-  index?: number,
-  list?: T[],
+  index: number,
+  list: T[],
   // 树层级，top从0开始
-  level?: number,
+  level: number,
   // 父节点，level 0 时为null
-  parent?: T | null
+  parent: T | null
 ) => T;
 // #endregion Fn
 
 // #region IOptions
-interface IOptions {
+interface IOptions<Key = string> {
   // 后代节点key，默认为 "children"
-  childKey?: string;
+  childKey?: Key;
   // 是否过滤不存在的节点，过滤类型为 null | undefined
   filterNull?: boolean;
   // 是否过滤为空的节点
@@ -28,7 +32,11 @@ interface IOptions {
 }
 // #endregion IOptions
 
-export function treeEach<T>(xs: T[], fn: Fn<T>, options?: IOptions): T[] {
+export function treeEach<T extends ITree, K extends keyof T>(
+  xs: T[],
+  fn: Fn<T>,
+  options?: IOptions<K>
+): T[] {
   const {
     childKey = "children",
     filterNull = true,
@@ -36,6 +44,7 @@ export function treeEach<T>(xs: T[], fn: Fn<T>, options?: IOptions): T[] {
     startLeaf = false,
   } = options || {};
   if (!Array.isArray(xs)) return [];
+
   const each = (list: T[], level: number, parent: T | null): T[] => {
     return list.reduce((result, value, index, array) => {
       let children = isExist(value) ? (value as any)[childKey] : null;
@@ -48,13 +57,10 @@ export function treeEach<T>(xs: T[], fn: Fn<T>, options?: IOptions): T[] {
       }
       if (typeof newItem === "object" && isExist(newItem)) {
         if (isNil(children) && filterNull) {
-          // @ts-ignore
           Reflect.deleteProperty(newItem, childKey);
         } else if (isExist(children) && isEmpty(children) && filterEmpty) {
-          // @ts-ignore
           Reflect.deleteProperty(newItem, childKey);
         } else {
-          // @ts-ignore
           newItem[childKey] = children;
         }
       } else if (filterNull && isNil(newItem)) {

@@ -117,3 +117,4 @@ docs
 rollup.config.js
 index.md
 .vitepress
+.DS_Store

@@ -16,6 +16,7 @@ export default defineConfig({
       { text: "快速开始", link: "/md/quick-start" },
       { text: "Function", link: "/fn/curry" },
       { text: "Class", link: "/class/Vector" },
+      { text: "Types", link: "/md/type/index.md" },
     ],
 
     sidebar,

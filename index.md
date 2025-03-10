@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "JS工具包"
   text: ""
-  tagline: simple, small, fast
+  tagline: 简单、小巧、0依赖
   actions:
     - theme: brand
       text: 快速开始
