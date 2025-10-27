@@ -1,6 +1,6 @@
 {
   "name": "wsp-toolkit",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Personal toolbox",
   "main": "dist/wsp-toolkit.cjs.prod.js",
   "unpkg": "dist/wsp-toolkit.global.prod.js",

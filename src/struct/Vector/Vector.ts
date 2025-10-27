@@ -38,13 +38,11 @@ function getScale(v1: Vector, v2: Vector): number {
 }
 
 export class Vector {
-  x: number = 0;
-  y: number = 0;
+  x: number;
+  y: number;
 
   constructor(a: Point, b?: Point) {
-    if (!a) {
-      return;
-    }
+    a = a || { x: 0, y: 0 };
     b = b || { x: 0, y: 0 };
     const { x, y } = pointSub(a, b);
     this.x = x;
