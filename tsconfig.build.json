@@ -1,0 +1,19 @@
+{
+  // 专用于类型声明构建：仅输出 .d.ts，避免与正常编译混淆
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationMap": false,
+    "stripInternal": true,
+    "rootDir": "./src",
+    "outDir": "dist",
+    "target": "ES2018",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*.test.ts"]
+}
+

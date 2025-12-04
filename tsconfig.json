@@ -1,6 +1,6 @@
 /* Visit https://aka.ms/tsconfig.json to read more about this file */
 {
-  "exclude": ["src/**/*.test.ts"],
+  "exclude": ["src/**/*.test.ts", "tsup.config.ts"],
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": "./src",
@@ -8,7 +8,7 @@
     "sourceMap": false,
     "noEmit": true,
 
-    "target": "ESNEXT",
+    "target": "es6",
     "module": "ESNEXT",
     "isolatedModules": true,
     "esModuleInterop": true,
@@ -16,7 +16,7 @@
     "forceConsistentCasingInFileNames": true,
 
     "strict": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": true, 
     "noUnusedParameters": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
